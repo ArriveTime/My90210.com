@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My90210.com — Everything Beverly Hills</title>
+    <title>My90210.com — Everything Beverly Hills | Holiday Edition</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -11,17 +11,25 @@
             theme: {
                 extend: {
                     colors: {
+                        champagne: {
+                            50: '#fdfbf7',
+                            100: '#f9f4e8',
+                            200: '#f1e4c8',
+                            300: '#e5ce9c',
+                        },
                         gold: {
-                            200: '#f3e5ab',
-                            300: '#e6c875',
                             400: '#d4af37',
                             500: '#b89225',
                             600: '#997518',
                         },
-                        obsidian: {
-                            800: '#161922',
-                            900: '#0d0f14',
-                            950: '#07080b',
+                        evergreen: {
+                            700: '#14532d',
+                            800: '#0f3f22',
+                            900: '#0a2b17',
+                        },
+                        crimson: {
+                            600: '#b91c1c',
+                            700: '#991b1b',
                         }
                     },
                     fontFamily: {
@@ -35,432 +43,518 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .gold-text {
-            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
+        .gold-shimmer {
+            background: linear-gradient(135deg, #b89225 0%, #e5c158 45%, #997518 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .glass-card {
-            background: rgba(15, 18, 25, 0.72);
+        .festive-glass {
+            background: rgba(255, 255, 255, 0.88);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(212, 175, 55, 0.22);
+            border: 1px solid rgba(212, 175, 55, 0.35);
         }
-        .glass-nav {
-            background: rgba(7, 8, 11, 0.85);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+        .snow-dot {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.75;
+            pointer-events: none;
+            animation: floatSnow linear infinite;
+        }
+        @keyframes floatSnow {
+            0% { transform: translateY(-10px); opacity: 0; }
+            20% { opacity: 0.85; }
+            100% { transform: translateY(85vh); opacity: 0; }
         }
     </style>
 </head>
-<body class="bg-obsidian-950 text-neutral-100 font-sans antialiased selection:bg-gold-400 selection:text-obsidian-950 overflow-x-hidden">
+<body class="bg-champagne-50 text-slate-900 font-sans antialiased selection:bg-crimson-600 selection:text-white overflow-x-hidden">
 
-    <!-- Sticky Luxury Top Navigation -->
-    <header class="sticky top-0 z-50 glass-nav border-b border-white/10">
+    <!-- Top Live Beverly Hills Utility Bar (Time, Date, Weather, News & Traffic) -->
+    <div class="bg-evergreen-900 text-champagne-100 border-b border-gold-400/40 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3">
+            <!-- Live Time & Date in 90210 -->
+            <div class="flex items-center gap-4 font-medium">
+                <span class="inline-flex items-center gap-1.5 text-gold-400 font-semibold">
+                    <i class="fa-regular fa-clock"></i>
+                    <span id="bh-time">Loading 90210 Time...</span>
+                </span>
+                <span class="hidden sm:inline text-white/30">|</span>
+                <span id="bh-date" class="hidden sm:inline text-champagne-200">Beverly Hills, CA</span>
+            </div>
+
+            <!-- Live 90210 Weather + Quick Traffic & News Triggers -->
+            <div class="flex flex-wrap items-center gap-4 sm:gap-6">
+                <div id="bh-weather" class="inline-flex items-center gap-1.5 bg-white/10 px-3 py-1 rounded-full text-champagne-50 font-semibold">
+                    <i class="fa-solid fa-sun text-amber-300"></i>
+                    <span>90210 Weather: 72°F Sunny</span>
+                </div>
+                <a href="#live-pulse" class="inline-flex items-center gap-1.5 text-amber-300 hover:text-white transition font-semibold">
+                    <i class="fa-solid fa-car-side"></i>
+                    <span>90210 Traffic</span>
+                </a>
+                <a href="#news" class="inline-flex items-center gap-1.5 text-rose-300 hover:text-white transition font-semibold">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <span>Breaking News</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bright Luxury Festive Header -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-champagne-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Brand Mark -->
+            <!-- Brand Logo -->
             <a href="#" class="flex items-center gap-3 group">
-                <div class="w-11 h-11 rounded-full border border-gold-400/60 flex items-center justify-center bg-obsidian-900 shadow-lg group-hover:border-gold-300 transition">
-                    <span class="font-serif text-gold-300 font-bold text-lg tracking-tight">90210</span>
+                <div class="w-11 h-11 rounded-full bg-gradient-to-br from-crimson-600 to-evergreen-800 border-2 border-gold-400 flex items-center justify-center shadow-md group-hover:scale-105 transition">
+                    <span class="font-serif text-white font-bold text-lg tracking-tight">90210</span>
                 </div>
                 <div>
-                    <span class="font-serif text-2xl font-bold tracking-tight text-white">My<span class="gold-text">90210</span>.com</span>
-                    <span class="block text-[9px] uppercase tracking-[0.28em] text-gold-300/80 font-semibold">Everything Beverly Hills</span>
+                    <div class="flex items-center gap-1.5">
+                        <span class="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">My<span class="gold-shimmer">90210</span>.com</span>
+                        <span class="hidden sm:inline-flex items-center gap-1 bg-crimson-600 text-white text-[9px] uppercase tracking-widest font-bold px-2 py-0.5 rounded-full">
+                            <i class="fa-solid fa-holly-berry"></i> Holiday
+                        </span>
+                    </div>
+                    <span class="block text-[10px] uppercase tracking-[0.26em] text-evergreen-800 font-bold">Everything Beverly Hills</span>
                 </div>
             </a>
 
             <!-- Desktop Navigation -->
-            <nav class="hidden lg:flex items-center gap-7 text-xs uppercase tracking-[0.18em] text-neutral-300 font-medium">
-                <a href="#directory" onclick="filterDirectory('all')" class="hover:text-gold-300 transition">All Directory</a>
-                <a href="#directory" onclick="filterDirectory('surgery')" class="hover:text-gold-300 transition">Cosmetic Surgery</a>
-                <a href="#directory" onclick="filterDirectory('dining')" class="hover:text-gold-300 transition">Fine Dining</a>
-                <a href="#directory" onclick="filterDirectory('realestate')" class="hover:text-gold-300 transition">Real Estate</a>
-                <a href="#directory" onclick="filterDirectory('shopping')" class="hover:text-gold-300 transition">Rodeo Boutiques</a>
-                <a href="#news" class="hover:text-gold-300 transition">90210 News</a>
+            <nav class="hidden lg:flex items-center gap-6 text-xs uppercase tracking-[0.16em] text-slate-700 font-bold">
+                <a href="#directory" onclick="filterDirectory('all')" class="hover:text-crimson-600 transition">Full Directory</a>
+                <a href="#directory" onclick="filterDirectory('surgery')" class="hover:text-crimson-600 transition">Cosmetic Surgery</a>
+                <a href="#directory" onclick="filterDirectory('dining')" class="hover:text-crimson-600 transition">Fine Dining</a>
+                <a href="#directory" onclick="filterDirectory('realestate')" class="hover:text-crimson-600 transition">Real Estate</a>
+                <a href="#directory" onclick="filterDirectory('shopping')" class="hover:text-crimson-600 transition">Rodeo Boutiques</a>
+                <a href="#live-pulse" class="hover:text-crimson-600 transition">Traffic & News</a>
             </nav>
 
-            <!-- Action Badge -->
-            <div class="flex items-center gap-3">
-                <a href="#directory" class="text-[11px] uppercase tracking-[0.2em] font-semibold text-obsidian-950 bg-gradient-to-r from-gold-200 via-gold-400 to-gold-500 px-4 py-2.5 rounded-full shadow-lg hover:brightness-110 transition">
-                    Explore 90210
-                </a>
-            </div>
+            <!-- CTA Pill -->
+            <a href="#directory" class="text-xs uppercase tracking-widest font-bold text-white bg-gradient-to-r from-crimson-600 via-crimson-700 to-evergreen-800 px-5 py-2.5 rounded-full shadow-md hover:brightness-110 transition">
+                Browse 90210
+            </a>
         </div>
     </header>
 
-    <!-- Full-Bleed Ultra-HD Hero Banner -->
-    <section class="relative w-full min-h-[88vh] flex flex-col justify-between overflow-hidden border-b border-gold-400/20">
-        <!-- High-Definition Beverly Hills Rodeo Drive Background -->
+    <!-- Bright Rodeo Drive Holiday Hero Banner -->
+    <section class="relative w-full min-h-[82vh] flex flex-col justify-center overflow-hidden border-b-4 border-gold-400">
+        <!-- High-Definition Illuminated Rodeo Drive Holiday Lights & Palms -->
         <img 
-            src="https://images.unsplash.com/photo-1580655653885-65763b2597d0?auto=format&fit=crop&w=2560&q=95" 
-            onerror="this.src='https://placehold.co/1920x1080/0d0f14/d4af37?text=My90210.com+Beverly+Hills'"
-            alt="Rodeo Drive Beverly Hills Palm Trees at Sunset" 
-            class="absolute inset-0 w-full h-full object-cover object-center"
+            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2400&q=95" 
+            onerror="this.src='https://images.unsplash.com/photo-1580655653885-65763b2597d0?auto=format&fit=crop&w=2400&q=90'"
+            alt="Rodeo Drive Beverly Hills Holiday Lights and Palm Trees" 
+            class="absolute inset-0 w-full h-full object-cover object-center brightness-95"
         />
 
-        <!-- Cinematic Dark & Gold Vignette Overlays -->
-        <div class="absolute inset-0 bg-gradient-to-b from-obsidian-950/75 via-obsidian-950/45 to-obsidian-950"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-obsidian-950/80 via-transparent to-obsidian-950/80"></div>
+        <!-- Bright Warm Sunlit & Festive Golden Glow Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-white/75 via-champagne-50/65 to-champagne-50"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-champagne-100/70 via-transparent to-champagne-100/70"></div>
 
-        <!-- Main Hero Typography -->
-        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 my-auto text-center py-16">
-            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-card text-gold-200 text-[11px] uppercase tracking-[0.25em] font-medium mb-6 shadow-2xl">
-                <i class="fa-solid fa-crown text-gold-400 text-[10px]"></i>
-                <span>Rodeo Drive • The Golden Triangle • Trousdale Estates</span>
+        <!-- Subtle Holiday Sparkle Particles -->
+        <div id="snow-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+
+        <!-- Center Hero Content -->
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-16 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95 border border-gold-400 text-evergreen-800 text-xs uppercase tracking-[0.22em] font-bold mb-6 shadow-md">
+                <i class="fa-solid fa-sleigh text-crimson-600"></i>
+                <span>Rodeo Drive Holiday Season • BOLD Beverly Hills</span>
             </div>
 
-            <h1 class="font-serif text-6xl sm:text-8xl lg:text-9xl font-bold tracking-tight leading-none mb-4 drop-shadow-2xl">
-                <span class="text-white">My</span><span class="gold-text">90210</span><span class="text-white">.com</span>
+            <h1 class="font-serif text-6xl sm:text-8xl lg:text-9xl font-bold tracking-tight leading-none mb-3 text-slate-900 drop-shadow-sm">
+                My<span class="gold-shimmer">90210</span>.com
             </h1>
 
-            <p class="text-lg sm:text-3xl font-light tracking-[0.35em] uppercase text-gold-200 mb-6 drop-shadow-lg">
+            <p class="text-xl sm:text-3xl font-bold tracking-[0.32em] uppercase text-crimson-700 mb-5">
                 Everything Beverly Hills
             </p>
 
-            <p class="max-w-2xl mx-auto text-sm sm:text-base text-neutral-300 font-light leading-relaxed mb-10">
-                Your direct insider portal to Beverly Hills' premier board-certified cosmetic surgeons, iconic fine dining establishments, trophy luxury real estate brokerages, Rodeo Drive fashion houses, and local 90210 dispatches.
+            <p class="max-w-2xl mx-auto text-sm sm:text-base text-slate-700 font-medium leading-relaxed mb-10 bg-white/75 backdrop-blur-sm px-6 py-3 rounded-2xl border border-gold-400/30">
+                Celebrate the season on Rodeo Drive. Explore Beverly Hills' premier cosmetic surgeons, festive fine dining, trophy estates, luxury holiday boutiques, live 90210 traffic, and local news.
             </p>
 
-            <!-- 4 Core Pillar Cards -->
+            <!-- Four Core Pillars -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto text-left">
-                <a href="#directory" onclick="filterDirectory('surgery')" class="glass-card rounded-2xl p-5 hover:border-gold-400/80 transition duration-300 group">
+                <a href="#directory" onclick="filterDirectory('surgery')" class="festive-glass rounded-2xl p-5 hover:border-crimson-600 hover:-translate-y-1 transition duration-300 shadow-lg group">
                     <div class="flex items-center justify-between mb-2">
-                        <i class="fa-solid fa-sparkles text-gold-400 text-lg"></i>
-                        <span class="text-[10px] uppercase tracking-widest text-neutral-400 group-hover:text-gold-300">01</span>
+                        <span class="w-9 h-9 rounded-xl bg-crimson-600/10 text-crimson-600 flex items-center justify-center">
+                            <i class="fa-solid fa-sparkles"></i>
+                        </span>
+                        <span class="text-[11px] font-bold text-gold-600">90210</span>
                     </div>
-                    <h2 class="font-serif text-xl font-bold text-white group-hover:text-gold-200 transition">Cosmetic Surgery</h2>
-                    <p class="text-xs text-neutral-400 mt-1">Rodeo Drive & Roxbury aesthetic specialists.</p>
+                    <h2 class="font-serif text-xl font-bold text-slate-900 group-hover:text-crimson-700 transition">Cosmetic Surgery</h2>
+                    <p class="text-xs text-slate-600 mt-1">Board-certified Rodeo & Roxbury clinics.</p>
                 </a>
 
-                <a href="#directory" onclick="filterDirectory('dining')" class="glass-card rounded-2xl p-5 hover:border-gold-400/80 transition duration-300 group">
+                <a href="#directory" onclick="filterDirectory('dining')" class="festive-glass rounded-2xl p-5 hover:border-evergreen-700 hover:-translate-y-1 transition duration-300 shadow-lg group">
                     <div class="flex items-center justify-between mb-2">
-                        <i class="fa-solid fa-champagne-glasses text-gold-400 text-lg"></i>
-                        <span class="text-[10px] uppercase tracking-widest text-neutral-400 group-hover:text-gold-300">02</span>
+                        <span class="w-9 h-9 rounded-xl bg-evergreen-700/10 text-evergreen-800 flex items-center justify-center">
+                            <i class="fa-solid fa-champagne-glasses"></i>
+                        </span>
+                        <span class="text-[11px] font-bold text-gold-600">90210</span>
                     </div>
-                    <h2 class="font-serif text-xl font-bold text-white group-hover:text-gold-200 transition">Fine Dining</h2>
-                    <p class="text-xs text-neutral-400 mt-1">Michelin-starred restaurants & iconic lounges.</p>
+                    <h2 class="font-serif text-xl font-bold text-slate-900 group-hover:text-evergreen-800 transition">Holiday Dining</h2>
+                    <p class="text-xs text-slate-600 mt-1">Festive lounges, hotels & Michelin restaurants.</p>
                 </a>
 
-                <a href="#directory" onclick="filterDirectory('realestate')" class="glass-card rounded-2xl p-5 hover:border-gold-400/80 transition duration-300 group">
+                <a href="#directory" onclick="filterDirectory('realestate')" class="festive-glass rounded-2xl p-5 hover:border-gold-500 hover:-translate-y-1 transition duration-300 shadow-lg group">
                     <div class="flex items-center justify-between mb-2">
-                        <i class="fa-solid fa-building-columns text-gold-400 text-lg"></i>
-                        <span class="text-[10px] uppercase tracking-widest text-neutral-400 group-hover:text-gold-300">03</span>
+                        <span class="w-9 h-9 rounded-xl bg-amber-500/15 text-gold-600 flex items-center justify-center">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </span>
+                        <span class="text-[11px] font-bold text-gold-600">90210</span>
                     </div>
-                    <h2 class="font-serif text-xl font-bold text-white group-hover:text-gold-200 transition">Luxury Real Estate</h2>
-                    <p class="text-xs text-neutral-400 mt-1">Trousdale, The Flats & Beverly Park estates.</p>
+                    <h2 class="font-serif text-xl font-bold text-slate-900 group-hover:text-gold-600 transition">Luxury Real Estate</h2>
+                    <p class="text-xs text-slate-600 mt-1">Trousdale, The Flats & Beverly Park estates.</p>
                 </a>
 
-                <a href="#news" class="glass-card rounded-2xl p-5 hover:border-gold-400/80 transition duration-300 group">
+                <a href="#directory" onclick="filterDirectory('shopping')" class="festive-glass rounded-2xl p-5 hover:border-crimson-600 hover:-translate-y-1 transition duration-300 shadow-lg group">
                     <div class="flex items-center justify-between mb-2">
-                        <i class="fa-regular fa-newspaper text-gold-400 text-lg"></i>
-                        <span class="text-[10px] uppercase tracking-widest text-neutral-400 group-hover:text-gold-300">04</span>
+                        <span class="w-9 h-9 rounded-xl bg-crimson-600/10 text-crimson-600 flex items-center justify-center">
+                            <i class="fa-solid fa-gift"></i>
+                        </span>
+                        <span class="text-[11px] font-bold text-gold-600">90210</span>
                     </div>
-                    <h2 class="font-serif text-xl font-bold text-white group-hover:text-gold-200 transition">90210 News & Media</h2>
-                    <p class="text-xs text-neutral-400 mt-1">City dispatches, galas & local publications.</p>
+                    <h2 class="font-serif text-xl font-bold text-slate-900 group-hover:text-crimson-700 transition">Rodeo Holiday Shopping</h2>
+                    <p class="text-xs text-slate-600 mt-1">Flagship fashion houses & high jewelry.</p>
                 </a>
             </div>
-        </div>
-
-        <!-- Coordinate Strip -->
-        <div class="relative z-10 max-w-7xl w-full mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between text-[11px] uppercase tracking-[0.25em] text-neutral-400">
-            <span>34.0736° N, 118.4004° W • Beverly Hills, CA 90210</span>
-            <span class="text-gold-300/90 mt-1 sm:mt-0">Direct Luxury Portal • Zero Lead Forms</span>
         </div>
     </section>
 
-    <!-- Main Interactive Beverly Hills Directory -->
-    <main id="directory" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-16">
+    <!-- Live Beverly Hills Pulse: Weather, Traffic & Local News -->
+    <section id="live-pulse" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
+        <div class="bg-white rounded-3xl shadow-xl border border-gold-400/40 p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Weather & Holiday Lights Status -->
+            <div class="bg-champagne-100/80 rounded-2xl p-5 border border-champagne-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[11px] uppercase tracking-widest font-bold text-evergreen-800">Beverly Hills Weather</span>
+                        <i class="fa-solid fa-sun text-amber-500 text-lg"></i>
+                    </div>
+                    <p id="pulse-weather-detail" class="font-serif text-2xl font-bold text-slate-900">72°F • Clear & Bright</p>
+                    <p class="text-xs text-slate-600 mt-1">Ideal evening weather for the Rodeo Drive Holiday Lighting Walk & Beverly Canon Gardens.</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-champagne-300 flex items-center justify-between text-xs font-bold text-evergreen-800">
+                    <span>Rodeo Lights: ON at Dusk</span>
+                    <i class="fa-solid fa-tree text-evergreen-700"></i>
+                </div>
+            </div>
+
+            <!-- Live 90210 Corridor Traffic -->
+            <div class="bg-champagne-100/80 rounded-2xl p-5 border border-champagne-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[11px] uppercase tracking-widest font-bold text-crimson-700">90210 Traffic & Valet</span>
+                        <i class="fa-solid fa-traffic-light text-crimson-600 text-lg"></i>
+                    </div>
+                    <p class="font-serif text-2xl font-bold text-slate-900">Wilshire & Santa Monica Blvd</p>
+                    <p class="text-xs text-slate-600 mt-1">Expect festive holiday shopping volume along Rodeo Dr, Canon Dr, and Beverly Dr. 2-hour complimentary city parking available.</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-champagne-300 flex items-center justify-between">
+                    <a href="https://www.google.com/maps/@34.0736,-118.4004,14z/data=!5m1!1e1" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-crimson-700 hover:underline inline-flex items-center gap-1.5">
+                        <span>Open Live 90210 Traffic Map</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Breaking 90210 News Dispatch -->
+            <div id="news" class="bg-champagne-100/80 rounded-2xl p-5 border border-champagne-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[11px] uppercase tracking-widest font-bold text-gold-600">Beverly Hills News</span>
+                        <i class="fa-regular fa-newspaper text-gold-600 text-lg"></i>
+                    </div>
+                    <p class="font-serif text-2xl font-bold text-slate-900">Golden Triangle Dispatches</p>
+                    <p class="text-xs text-slate-600 mt-1">Read daily coverage on city council updates, holiday galas, restaurant openings, and 90210 society news.</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-champagne-300 flex items-center gap-4 text-xs font-bold">
+                    <a href="https://bhcourier.com" target="_blank" rel="noopener noreferrer" class="text-slate-900 hover:text-crimson-700 underline">BH Courier</a>
+                    <a href="https://beverlypress.com" target="_blank" rel="noopener noreferrer" class="text-slate-900 hover:text-crimson-700 underline">Beverly Press</a>
+                    <a href="https://beverlyhills.org" target="_blank" rel="noopener noreferrer" class="text-slate-900 hover:text-crimson-700 underline">City Hall</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comprehensive Beverly Hills Business Directory -->
+    <main id="directory" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-10">
         
-        <!-- Directory Header & Category Switcher -->
-        <div class="text-center max-w-3xl mx-auto space-y-4">
-            <span class="text-xs uppercase tracking-[0.28em] text-gold-400 font-semibold">Curated 90210 Directory</span>
-            <h2 class="font-serif text-4xl sm:text-5xl font-bold text-white">Direct Connections to Beverly Hills</h2>
-            <p class="text-sm text-neutral-400">
-                Select a category below to explore premier institutions, clinics, restaurants, and brokerages in 90210 with direct links and phone numbers.
+        <!-- Directory Heading -->
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+            <span class="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.25em] text-crimson-700 font-bold">
+                <i class="fa-solid fa-star text-gold-500"></i> Complete 90210 Business Guide
+            </span>
+            <h2 class="font-serif text-4xl sm:text-5xl font-bold text-slate-900">Beverly Hills Premier Directory</h2>
+            <p class="text-sm text-slate-600">
+                Browse direct phone lines and official websites across Beverly Hills' top clinics, dining rooms, brokerages, Rodeo Drive flagships, wellness spas, and local businesses.
             </p>
         </div>
 
-        <!-- Filter Buttons -->
-        <div id="filter-bar" class="flex flex-wrap items-center justify-center gap-3">
-            <button onclick="filterDirectory('all')" data-cat="all" class="filter-btn active px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition border border-gold-400 bg-gold-400 text-obsidian-950">
-                All 90210 Listings
-            </button>
-            <button onclick="filterDirectory('surgery')" data-cat="surgery" class="filter-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition border border-white/15 bg-obsidian-900 text-neutral-300 hover:border-gold-400/60">
-                Cosmetic Surgery & MedSpas
-            </button>
-            <button onclick="filterDirectory('dining')" data-cat="dining" class="filter-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition border border-white/15 bg-obsidian-900 text-neutral-300 hover:border-gold-400/60">
-                Fine Dining & Hotels
-            </button>
-            <button onclick="filterDirectory('realestate')" data-cat="realestate" class="filter-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition border border-white/15 bg-obsidian-900 text-neutral-300 hover:border-gold-400/60">
-                Luxury Real Estate
-            </button>
-            <button onclick="filterDirectory('shopping')" data-cat="shopping" class="filter-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition border border-white/15 bg-obsidian-900 text-neutral-300 hover:border-gold-400/60">
-                Rodeo Drive & Concierge
-            </button>
+        <!-- Category Filter Pills + Quick Filter Input -->
+        <div class="bg-white p-4 sm:p-6 rounded-3xl shadow-md border border-champagne-200 space-y-4">
+            <div class="flex flex-wrap items-center justify-center gap-2.5">
+                <button onclick="filterDirectory('all')" data-cat="all" class="filter-btn active px-4 py-2 rounded-full text-xs uppercase tracking-wider font-bold transition bg-evergreen-800 text-white shadow">
+                    All Categories (<span id="count-all">0</span>)
+                </button>
+                <button onclick="filterDirectory('surgery')" data-cat="surgery" class="filter-btn px-4 py-2 rounded-full text-xs uppercase tracking-wider font-bold transition bg-champagne-100 text-slate-800 hover:bg-champagne-200">
+                    Cosmetic Surgery & MedSpas
+                </button>
+                <button onclick="filterDirectory('dining')" data-cat="dining" class="filter-btn px-4 py-2 rounded-full text-xs uppercase tracking-wider font-bold transition bg-champagne-100 text-slate-800 hover:bg-champagne-200">
+                    Fine Dining & Cafés
+                </button>
+                <button onclick="filterDirectory('realestate')" data-cat="realestate" class="filter-btn px-4 py-2 rounded-full text-xs uppercase tracking-wider font-bold transition bg-champagne-100 text-slate-800 hover:bg-champagne-200">
+                    Luxury Real Estate
+                </button>
+                <button onclick="filterDirectory('shopping')" data-cat="shopping" class="filter-btn px-4 py-2 rounded-full text-xs uppercase tracking-wider font-bold transition bg-champagne-100 text-slate-800 hover:bg-champagne-200">
+                    Rodeo Drive & Jewelry
+                </button>
+                <button onclick="filterDirectory('hotels')" data-cat="hotels" class="filter-btn px-4 py-2 rounded-full text-xs uppercase tracking-wider font-bold transition bg-champagne-100 text-slate-800 hover:bg-champagne-200">
+                    5-Star Hotels & Spas
+                </button>
+                <button onclick="filterDirectory('wellness')" data-cat="wellness" class="filter-btn px-4 py-2 rounded-full text-xs uppercase tracking-wider font-bold transition bg-champagne-100 text-slate-800 hover:bg-champagne-200">
+                    Dentistry, Hair & Concierge
+                </button>
+            </div>
+
+            <!-- Instant Keyword Filter -->
+            <div class="max-w-xl mx-auto relative">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                <input 
+                    type="text" 
+                    id="directory-filter-input" 
+                    oninput="handleKeywordFilter(this.value)"
+                    placeholder="Filter by business name, street (Rodeo, Canon, Wilshire), or specialty..." 
+                    class="w-full pl-11 pr-4 py-3 rounded-2xl bg-champagne-50 border border-champagne-300 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-gold-500"
+                />
+            </div>
         </div>
 
-        <!-- Directory Cards Grid -->
+        <!-- Business Cards Grid -->
         <div id="listings-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Populated dynamically via clean inline JS -->
+            <!-- Dynamically populated with comprehensive 90210 businesses -->
         </div>
 
-        <!-- 90210 News & Local Publications Section -->
-        <section id="news" class="pt-12 border-t border-white/10 space-y-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-                <div>
-                    <span class="text-xs uppercase tracking-[0.28em] text-gold-400 font-semibold">Press & Local Dispatches</span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mt-1">Beverly Hills News & City Guides</h2>
-                </div>
-                <span class="text-xs text-neutral-400 uppercase tracking-widest">Updated 90210 Coverage</span>
+        <!-- Local Business Inclusion Banner -->
+        <div class="bg-gradient-to-r from-evergreen-900 via-evergreen-800 to-crimson-700 rounded-3xl p-8 sm:p-10 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border-2 border-gold-400/50">
+            <div class="space-y-2 text-center md:text-left">
+                <span class="text-xs uppercase tracking-[0.25em] text-gold-400 font-bold">90210 Chamber & Merchant Network</span>
+                <h3 class="font-serif text-3xl font-bold">Own or Manage a Business in Beverly Hills?</h3>
+                <p class="text-sm text-champagne-100 max-w-2xl">
+                    We continuously expand My90210.com to include every boutique, clinic, restaurant, salon, and professional practice in the 90210 and 90212 zip codes.
+                </p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <a href="https://beverlyhills.org" target="_blank" rel="noopener noreferrer" class="bg-obsidian-900 border border-white/10 hover:border-gold-400/50 rounded-2xl p-6 transition group flex flex-col justify-between">
-                    <div>
-                        <span class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Official Civic Portal</span>
-                        <h3 class="font-serif text-2xl font-bold text-white mt-2 group-hover:text-gold-200 transition">City of Beverly Hills Official</h3>
-                        <p class="text-xs text-neutral-400 mt-2 leading-relaxed">
-                            Municipal announcements, Golden Triangle cultural events, city council schedules, and Rodeo Drive permits.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-gold-300 font-semibold">
-                        <span>Visit beverlyhills.org</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </div>
-                </a>
-
-                <a href="https://bhcourier.com" target="_blank" rel="noopener noreferrer" class="bg-obsidian-900 border border-white/10 hover:border-gold-400/50 rounded-2xl p-6 transition group flex flex-col justify-between">
-                    <div>
-                        <span class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Local Newspaper</span>
-                        <h3 class="font-serif text-2xl font-bold text-white mt-2 group-hover:text-gold-200 transition">The Beverly Hills Courier</h3>
-                        <p class="text-xs text-neutral-400 mt-2 leading-relaxed">
-                            Since 1965, covering 90210 society galas, real estate transactions, local business openings, and community news.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-gold-300 font-semibold">
-                        <span>Read bhcourier.com</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </div>
-                </a>
-
-                <a href="https://lovebeverlyhills.com" target="_blank" rel="noopener noreferrer" class="bg-obsidian-900 border border-white/10 hover:border-gold-400/50 rounded-2xl p-6 transition group flex flex-col justify-between">
-                    <div>
-                        <span class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Events & Hospitality</span>
-                        <h3 class="font-serif text-2xl font-bold text-white mt-2 group-hover:text-gold-200 transition">Love Beverly Hills Calendar</h3>
-                        <p class="text-xs text-neutral-400 mt-2 leading-relaxed">
-                            Seasonal concierge guide to Concours d'Elegance on Rodeo Drive, art walks, and hotel dining experiences.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-gold-300 font-semibold">
-                        <span>Explore lovebeverlyhills.com</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </div>
-                </a>
-            </div>
-        </section>
+            <a href="https://beverlyhillschamber.com" target="_blank" rel="noopener noreferrer" class="shrink-0 px-6 py-3.5 rounded-full bg-white text-evergreen-900 font-bold text-xs uppercase tracking-widest hover:bg-champagne-100 transition shadow-lg">
+                BH Chamber Directory <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+            </a>
+        </div>
 
     </main>
 
-    <!-- Luxury Footer -->
-    <footer class="bg-obsidian-900 border-t border-white/10 py-12 px-4 sm:px-6 lg:px-8 text-xs text-neutral-400">
+    <!-- Bright Festive Footer -->
+    <footer class="bg-white border-t border-champagne-200 py-12 px-4 sm:px-6 lg:px-8 text-xs text-slate-600">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-full border border-gold-400/50 flex items-center justify-center text-gold-300 font-serif font-bold">
+                <div class="w-10 h-10 rounded-full bg-evergreen-800 border border-gold-400 flex items-center justify-center text-white font-serif font-bold">
                     90210
                 </div>
                 <div>
-                    <span class="font-serif text-lg font-bold text-white">My<span class="text-gold-400">90210</span>.com</span>
-                    <span class="block text-[10px] uppercase tracking-widest text-neutral-500">Everything Beverly Hills</span>
+                    <span class="font-serif text-xl font-bold text-slate-900">My<span class="text-gold-600">90210</span>.com</span>
+                    <span class="block text-[10px] uppercase tracking-widest text-crimson-700 font-bold">Everything Beverly Hills • Holiday Edition</span>
                 </div>
             </div>
-            <p class="text-center md:text-right text-[11px] text-neutral-500 max-w-md">
-                &copy; 2026 My90210.com. Direct informational directory for Beverly Hills, CA 90210. All trademarks belong to their respective owners.
+            <p class="text-center md:text-right text-[11px] text-slate-500 max-w-md">
+                &copy; 2026 My90210.com. Direct informational directory for Beverly Hills, California. All business names and trademarks belong to their respective owners.
             </p>
         </div>
     </footer>
 
-    <!-- Interactive Directory Script -->
+    <!-- Live Clock, Weather & Comprehensive Directory Script -->
     <script>
+        // 1. Live Beverly Hills Time & Date (America/Los_Angeles)
+        function updateBeverlyHillsClock() {
+            const now = new Date();
+            const timeOptions = {
+                timeZone: 'America/Los_Angeles',
+                hour: 'numeric',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            };
+            const dateOptions = {
+                timeZone: 'America/Los_Angeles',
+                weekday: 'long',
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric'
+            };
+            const timeEl = document.getElementById('bh-time');
+            const dateEl = document.getElementById('bh-date');
+            if (timeEl) timeEl.textContent = now.toLocaleTimeString('en-US', timeOptions) + ' PT';
+            if (dateEl) dateEl.textContent = now.toLocaleDateString('en-US', dateOptions);
+        }
+
+        // 2. Live 90210 Weather via Open-Meteo (No API Key Required)
+        async function fetchBeverlyHillsWeather() {
+            try {
+                const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=34.0736&longitude=-118.4004&current_weather=true&temperature_unit=fahrenheit');
+                const data = await res.json();
+                if (data && data.current_weather) {
+                    const temp = Math.round(data.current_weather.temperature);
+                    const code = data.current_weather.weathercode;
+                    const condition = code <= 3 ? 'Sunny & Clear' : (code < 60 ? 'Partly Cloudy' : 'Coastal Showers');
+                    const navWeather = document.getElementById('bh-weather');
+                    const pulseWeather = document.getElementById('pulse-weather-detail');
+                    if (navWeather) {
+                        navWeather.innerHTML = `<i class="fa-solid fa-sun text-amber-300"></i><span>90210 Weather: ${temp}°F ${condition}</span>`;
+                    }
+                    if (pulseWeather) {
+                        pulseWeather.textContent = `${temp}°F • ${condition}`;
+                    }
+                }
+            } catch (e) {
+                // Keep graceful default if offline
+            }
+        }
+
+        // 3. Subtle Holiday Snow/Sparkle Particles in Hero
+        function initHolidaySparkles() {
+            const container = document.getElementById('snow-container');
+            if (!container) return;
+            for (let i = 0; i < 24; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'snow-dot';
+                const size = Math.random() * 5 + 3;
+                dot.style.width = `${size}px`;
+                dot.style.height = `${size}px`;
+                dot.style.left = `${Math.random() * 100}%`;
+                dot.style.animationDuration = `${Math.random() * 6 + 6}s`;
+                dot.style.animationDelay = `${Math.random() * 5}s`;
+                container.appendChild(dot);
+            }
+        }
+
+        // 4. Comprehensive Beverly Hills Business Directory
         const listings = [
             // Cosmetic Surgery & MedSpas
-            {
-                category: 'surgery',
-                badge: 'Cosmetic Surgery',
-                name: 'Lasky Clinic Beverly Hills',
-                address: '201 S Lasky Dr, Beverly Hills, CA 90212',
-                desc: 'Renowned plastic and reconstructive surgery center specializing in facial rejuvenation and bespoke aesthetic procedures.',
-                phone: '(310) 552-2173',
-                tel: '+13105522173',
-                url: 'https://www.laskyclinic.com'
-            },
-            {
-                category: 'surgery',
-                badge: 'Plastic Surgery',
-                name: 'Beverly Hills Plastic Surgery Group',
-                address: '436 N Bedford Dr, Suite 306, Beverly Hills, CA 90210',
-                desc: 'Board-certified aesthetic surgeons offering rhinoplasty, body contouring, and minimally invasive treatments.',
-                phone: '(310) 275-6600',
-                tel: '+13102756600',
-                url: 'https://www.bhpsg.com'
-            },
-            {
-                category: 'surgery',
-                badge: 'Dermatology & Laser',
-                name: 'Koppelman Aesthetic Surgery & Hair',
-                address: '9675 Brighton Way, Beverly Hills, CA 90210',
-                desc: 'Boutique facial plastic surgery, oculoplastic specialists, and advanced follicular restoration in the Golden Triangle.',
-                phone: '(310) 276-1881',
-                tel: '+13102761881',
-                url: 'https://www.kopelmanhair.com'
-            },
-            {
-                category: 'surgery',
-                badge: 'Luxury MedSpa',
-                name: 'The Spa at The Beverly Hills Hotel',
-                address: '9641 Sunset Blvd, Beverly Hills, CA 90210',
-                desc: 'Signature cellular facials, red-carpet sculpting treatments, and tranquil private wellness suites.',
-                phone: '(310) 887-2006',
-                tel: '+13108872006',
-                url: 'https://www.dorchestercollection.com/los-angeles/the-beverly-hills-hotel/spa'
-            },
+            { category: 'surgery', badge: 'Cosmetic Surgery', name: 'Lasky Clinic Beverly Hills', address: '201 S Lasky Dr, Beverly Hills, CA 90212', desc: 'Premier plastic and reconstructive surgery institute specializing in facial rejuvenation and body contouring.', phone: '(310) 552-2173', tel: '+13105522173', url: 'https://www.laskyclinic.com' },
+            { category: 'surgery', badge: 'Plastic Surgery', name: 'Beverly Hills Plastic Surgery Group', address: '436 N Bedford Dr, Suite 306, Beverly Hills, CA 90210', desc: 'Board-certified aesthetic surgeons offering bespoke rhinoplasty, facelift, and non-surgical laser procedures.', phone: '(310) 275-6600', tel: '+13102756600', url: 'https://www.bhpsg.com' },
+            { category: 'surgery', badge: 'Facial & Hair Restoration', name: 'Kopelman Aesthetic Surgery & Hair', address: '9675 Brighton Way, Beverly Hills, CA 90210', desc: 'Oculoplastic facial surgery, precision follicular hair restoration, and regenerative skin therapies.', phone: '(310) 276-1881', tel: '+13102761881', url: 'https://www.kopelmanhair.com' },
+            { category: 'surgery', badge: 'Dermatology & Laser', name: 'Kassabian & Lift MD Aesthetics', address: '435 N Roxbury Dr, Suite 100, Beverly Hills, CA 90210', desc: 'Comprehensive cosmetic plastic surgery, injectable artistry, and advanced skin resurfacing.', phone: '(310) 285-0400', tel: '+13102850400', url: 'https://www.liftmd.com' },
+            { category: 'surgery', badge: 'Cosmetic Dermatology', name: 'Obagi Skin Health Institute', address: '9033 Wilshire Blvd, Suite 100, Beverly Hills, CA 90211', desc: 'World-renowned dermatology clinic specializing in clinical skincare, laser treatments, and anti-aging.', phone: '(310) 275-3030', tel: '+13102753030', url: 'https://www.obagi.com' },
+            { category: 'surgery', badge: 'Aesthetic Surgery', name: 'Garth Fisher, MD Plastic Surgery', address: '120 S Spalding Dr, Suite 222, Beverly Hills, CA 90212', desc: 'Acclaimed Beverly Hills aesthetic plastic surgeon known for natural, refined surgical results.', phone: '(310) 273-5995', tel: '+13102735995', url: 'https://www.garthfisher.com' },
+            { category: 'surgery', badge: 'Rhinoplasty & Facial', name: 'NassifMD Medical Spa & Surgery', address: '120 S Spalding Dr, Suite 301, Beverly Hills, CA 90212', desc: 'Specialized facial plastic surgery, revision rhinoplasty, and medical spa rejuvenation treatments.', phone: '(310) 275-2467', tel: '+13102752467', url: 'https://www.drpaulnassif.com' },
+            { category: 'surgery', badge: 'Aesthetic Medicine', name: 'Diamond Face Institute', address: '421 N Rodeo Dr, Penthouse, Beverly Hills, CA 90210', desc: 'Rodeo Drive facial sculpting, minimally invasive lifting, and custom injectable aesthetics.', phone: '(310) 859-9816', tel: '+13108599816', url: 'https://www.jasondiamond.com' },
 
-            // Fine Dining & Iconic Hotels
-            {
-                category: 'dining',
-                badge: 'Iconic Dining',
-                name: 'The Polo Lounge',
-                address: '9641 Sunset Blvd, Beverly Hills, CA 90210',
-                desc: 'Legendary Hollywood power-lunch destination featuring garden patio dining, live jazz, and classic California cuisine.',
-                phone: '(310) 887-2777',
-                tel: '+13108872777',
-                url: 'https://www.dorchestercollection.com/los-angeles/the-beverly-hills-hotel/dining/the-polo-lounge'
-            },
-            {
-                category: 'dining',
-                badge: 'Steakhouse & Lounge',
-                name: 'CUT by Wolfgang Puck',
-                address: '9500 Wilshire Blvd, Beverly Hills, CA 90212',
-                desc: 'Michelin-starred contemporary steakhouse inside the Beverly Wilshire offering Japanese Wagyu and an extensive cellar.',
-                phone: '(310) 276-8500',
-                tel: '+13102768500',
-                url: 'https://wolfgangpuck.com/restaurants/cut-beverly-hills/'
-            },
-            {
-                category: 'dining',
-                badge: 'Classic Bistro',
-                name: 'The Grill on the Alley',
-                address: '9560 Dayton Way, Beverly Hills, CA 90210',
-                desc: 'Beloved Golden Triangle institution serving prime steaks, fresh seafood, and classic martinis since 1984.',
-                phone: '(310) 276-0615',
-                tel: '+13102760615',
-                url: 'https://www.thegrill.com'
-            },
-            {
-                category: 'dining',
-                badge: 'Italian Fine Dining',
-                name: 'Il Pastaio Beverly Hills',
-                address: '400 N Canon Dr, Beverly Hills, CA 90210',
-                desc: 'Giacomino Drago’s iconic Canon Drive trattoria known for handmade pastas, white truffles, and patio people-watching.',
-                phone: '(310) 205-5444',
-                tel: '+13102055444',
-                url: 'https://www.giacominodrago.com/il-pastaio'
-            },
+            // Fine Dining & Iconic Cafés
+            { category: 'dining', badge: 'Iconic Dining', name: 'The Polo Lounge', address: '9641 Sunset Blvd, Beverly Hills, CA 90210', desc: 'Legendary garden patio dining inside The Beverly Hills Hotel with live piano and holiday brunch menus.', phone: '(310) 887-2777', tel: '+13108872777', url: 'https://www.dorchestercollection.com/los-angeles/the-beverly-hills-hotel/dining/the-polo-lounge' },
+            { category: 'dining', badge: 'Michelin Steakhouse', name: 'CUT by Wolfgang Puck', address: '9500 Wilshire Blvd, Beverly Hills, CA 90212', desc: 'Michelin-starred contemporary steakhouse inside the Beverly Wilshire featuring Japanese A5 Wagyu.', phone: '(310) 276-8500', tel: '+13102768500', url: 'https://wolfgangpuck.com/restaurants/cut-beverly-hills/' },
+            { category: 'dining', badge: 'Classic Bistro', name: 'The Grill on the Alley', address: '9560 Dayton Way, Beverly Hills, CA 90210', desc: 'Golden Triangle landmark serving prime steaks, fresh seafood, and classic cocktails since 1984.', phone: '(310) 276-0615', tel: '+13102760615', url: 'https://www.thegrill.com' },
+            { category: 'dining', badge: 'Italian Fine Dining', name: 'Il Pastaio Beverly Hills', address: '400 N Canon Dr, Beverly Hills, CA 90210', desc: 'Iconic Canon Drive trattoria famous for handmade pastas, white truffles, and vibrant patio seating.', phone: '(310) 205-5444', tel: '+13102055444', url: 'https://www.giacominodrago.com/il-pastaio' },
+            { category: 'dining', badge: 'Iconic Steakhouse', name: 'Mastro’s Steakhouse Beverly Hills', address: '246 N Canon Dr, Beverly Hills, CA 90210', desc: 'Upscale three-story steakhouse and rooftop penthouse lounge with nightly live music.', phone: '(310) 888-8782', tel: '+13108888782', url: 'https://www.mastrosrestaurants.com' },
+            { category: 'dining', badge: 'Mediterranean', name: 'Avra Beverly Hills', address: '233 N Beverly Dr, Beverly Hills, CA 90210', desc: 'Fresh Greek seafood market display, wood-grilled specialties, and dramatic high-ceiling dining room.', phone: '(310) 734-0841', tel: '+13107340841', url: 'https://theavragroup.com' },
+            { category: 'dining', badge: 'French Bistro', name: 'Bouchon Bistro', address: '235 N Canon Dr, Beverly Hills, CA 90210', desc: 'Thomas Keller’s classic Parisian bistro overlooking Beverly Canon Gardens and holiday displays.', phone: '(310) 271-9910', tel: '+13102719910', url: 'https://www.thomaskeller.com/bouchonbeverlyhills' },
+            { category: 'dining', badge: 'Japanese Fine Dining', name: 'Nobu Los Angeles / Beverly Hills', address: '903 N La Cienega Blvd, West Hollywood / 90210 Border', desc: 'World-famous Japanese-Peruvian cuisine featuring Black Cod with Miso and signature cocktails.', phone: '(310) 657-5711', tel: '+13106575711', url: 'https://www.noburestaurants.com' },
+            { category: 'dining', badge: 'Historic Deli & Café', name: 'Nate ’n Al Delicatessen', address: '414 N Beverly Dr, Beverly Hills, CA 90210', desc: 'Beloved Beverly Hills institution serving classic deli fare and breakfast since 1945.', phone: '(310) 274-0101', tel: '+13102740101', url: 'https://natenal.com' },
+            { category: 'dining', badge: 'European Café', name: 'Via Alloro', address: '301 N Canon Dr, Beverly Hills, CA 90210', desc: 'Warm Italian dining room and wrap-around terrace in the heart of the Golden Triangle.', phone: '(310) 275-2900', tel: '+13102752900', url: 'https://www.viaalloro.com' },
 
             // Luxury Real Estate
-            {
-                category: 'realestate',
-                badge: 'Luxury Brokerage',
-                name: 'The Agency Beverly Hills',
-                address: '331 Foothill Rd, Suite 100, Beverly Hills, CA 90210',
-                desc: 'Global luxury real estate brokerage representing architectural estates in Trousdale, Beverly Park, and The Flats.',
-                phone: '(424) 230-3700',
-                tel: '+14242303700',
-                url: 'https://www.theagencyre.com'
-            },
-            {
-                category: 'realestate',
-                badge: 'Trophy Estates',
-                name: 'Hilton & Hyland',
-                address: '257 N Canon Dr, Beverly Hills, CA 90210',
-                desc: 'Founding Christie’s International Real Estate affiliate specializing in ultra-high-net-worth 90210 residential properties.',
-                phone: '(310) 278-3311',
-                tel: '+13102783311',
-                url: 'https://www.hiltonhyland.com'
-            },
-            {
-                category: 'realestate',
-                badge: 'Architectural Homes',
-                name: 'Westside Estate Agency',
-                address: '210 N Canon Dr, Beverly Hills, CA 90210',
-                desc: 'Premier representation for historic estates, gated compounds, and custom modern residences across Beverly Hills.',
-                phone: '(310) 247-7770',
-                tel: '+13102477770',
-                url: 'https://www.weahomes.com'
-            },
+            { category: 'realestate', badge: 'Global Brokerage', name: 'The Agency Beverly Hills', address: '331 Foothill Rd, Suite 100, Beverly Hills, CA 90210', desc: 'Premier luxury real estate brokerage representing architectural estates in Trousdale and Beverly Park.', phone: '(424) 230-3700', tel: '+14242303700', url: 'https://www.theagencyre.com' },
+            { category: 'realestate', badge: 'Trophy Estates', name: 'Hilton & Hyland', address: '257 N Canon Dr, Beverly Hills, CA 90210', desc: 'Christie’s International Real Estate affiliate specializing in ultra-high-net-worth 90210 estates.', phone: '(310) 278-3311', tel: '+13102783311', url: 'https://www.hiltonhyland.com' },
+            { category: 'realestate', badge: 'Architectural Homes', name: 'Westside Estate Agency', address: '210 N Canon Dr, Beverly Hills, CA 90210', desc: 'Boutique representation for gated compounds, historic estates, and modern residences.', phone: '(310) 247-7770', tel: '+13102477770', url: 'https://www.weahomes.com' },
+            { category: 'realestate', badge: 'Luxury Real Estate', name: 'Sotheby’s International Realty — BH', address: '9665 Wilshire Blvd, Suite 400, Beverly Hills, CA 90212', desc: 'Global luxury residential specialists serving Beverly Hills, Holmby Hills, and Bel Air.', phone: '(310) 724-7000', tel: '+13107247000', url: 'https://www.sothebysrealty.com' },
+            { category: 'realestate', badge: 'Residential Brokerage', name: 'Coldwell Banker Realty — Beverly Hills', address: '301 N Canon Dr, Suite E, Beverly Hills, CA 90210', desc: 'Flagship Beverly Hills office representing The Flats, Trousdale Estates, and luxury condos.', phone: '(310) 777-6200', tel: '+13107776200', url: 'https://www.coldwellbankerhomes.com' },
+            { category: 'realestate', badge: 'Modern Estates', name: 'Carolwood Estates', address: '9440 Santa Monica Blvd, Suite 800, Beverly Hills, CA 90210', desc: 'Boutique Beverly Hills brokerage focused on landmark architectural properties and private sales.', phone: '(310) 626-4248', tel: '+13106264248', url: 'https://www.carolwoodre.com' },
 
-            // Rodeo Drive Boutiques & Concierge
-            {
-                category: 'shopping',
-                badge: 'Rodeo Drive Landmark',
-                name: 'Two Rodeo Drive',
-                address: '9480 Dayton Way, Beverly Hills, CA 90210',
-                desc: 'Cobblestone European-style luxury promenade housing haute couture houses, high jewelry, and private salons.',
-                phone: '(310) 247-7040',
-                tel: '+13102477040',
-                url: 'https://rodeodrive-bh.com'
-            },
-            {
-                category: 'shopping',
-                badge: 'Five-Star Hospitality',
-                name: 'Beverly Wilshire, A Four Seasons Hotel',
-                address: '9500 Wilshire Blvd, Beverly Hills, CA 90212',
-                desc: 'Historic landmark hotel at the foot of Rodeo Drive offering luxury suites, Forbes Five-Star spa, and concierge services.',
-                phone: '(310) 275-5200',
-                tel: '+13102755200',
-                url: 'https://www.fourseasons.com/beverlywilshire/'
-            }
+            // Rodeo Drive Boutiques & High Jewelry
+            { category: 'shopping', badge: 'Rodeo Drive Landmark', name: 'Two Rodeo Drive', address: '9480 Dayton Way, Beverly Hills, CA 90210', desc: 'Iconic European cobblestone promenade featuring luxury fashion houses, holiday trees, and private salons.', phone: '(310) 247-7040', tel: '+13102477040', url: 'https://rodeodrive-bh.com' },
+            { category: 'shopping', badge: 'High Jewelry', name: 'Tiffany & Co. Rodeo Drive', address: '210 N Rodeo Dr, Beverly Hills, CA 90210', desc: 'Iconic flagship jewelry house illuminated for the holidays on North Rodeo Drive.', phone: '(310) 273-8880', tel: '+13102738880', url: 'https://www.tiffany.com' },
+            { category: 'shopping', badge: 'Haute Horlogerie', name: 'Cartier Beverly Hills', address: '370 N Rodeo Dr, Beverly Hills, CA 90210', desc: 'Historic French Maison showcasing fine watches, diamonds, and bespoke holiday gifts.', phone: '(310) 275-4272', tel: '+13102754272', url: 'https://www.cartier.com' },
+            { category: 'shopping', badge: 'Luxury Department Store', name: 'Saks Fifth Avenue Beverly Hills', address: '9600 Wilshire Blvd, Beverly Hills, CA 90212', desc: 'Newly reimagined luxury women’s and men’s designer flagship at Wilshire & Camden.', phone: '(310) 275-4211', tel: '+13102754211', url: 'https://www.saksfifthavenue.com' },
+            { category: 'shopping', badge: 'Designer Flagship', name: 'Neiman Marcus Beverly Hills', address: '9700 Wilshire Blvd, Beverly Hills, CA 90212', desc: 'Multi-level luxury fashion destination, Mariposa restaurant, and holiday gift concierge.', phone: '(310) 550-5900', tel: '+13105505900', url: 'https://www.neimanmarcus.com' },
+            { category: 'shopping', badge: 'Luxury Couture', name: 'Chanel Beverly Hills Flagship', address: '400 N Rodeo Dr, Beverly Hills, CA 90210', desc: 'Architecturally stunning four-story Rodeo Drive flagship housing haute couture, watches, and beauty.', phone: '(310) 278-5500', tel: '+13102785500', url: 'https://www.chanel.com' },
+
+            // 5-Star Hotels & Spas
+            { category: 'hotels', badge: 'Five-Star Landmark', name: 'Beverly Wilshire, A Four Seasons Hotel', address: '9500 Wilshire Blvd, Beverly Hills, CA 90212', desc: 'Historic luxury hotel directly across from Rodeo Drive with festive holiday decor and Forbes Five-Star Spa.', phone: '(310) 275-5200', tel: '+13102755200', url: 'https://www.fourseasons.com/beverlywilshire/' },
+            { category: 'hotels', badge: 'Iconic Resort', name: 'The Beverly Hills Hotel', address: '9641 Sunset Blvd, Beverly Hills, CA 90210', desc: 'The legendary "Pink Palace" offering private bungalows, palm-lined gardens, and festive holiday afternoon tea.', phone: '(310) 276-2251', tel: '+13102762251', url: 'https://www.dorchestercollection.com/los-angeles/the-beverly-hills-hotel' },
+            { category: 'hotels', badge: 'Luxury Urban Resort', name: 'The Peninsula Beverly Hills', address: '9882 S Santa Monica Blvd, Beverly Hills, CA 90212', desc: 'Five-Diamond resort renowned for rooftop pool cabanas, The Living Room holiday tea, and chauffeured Rolls-Royces.', phone: '(310) 551-2888', tel: '+13105512888', url: 'https://www.peninsula.com/en/beverly-hills' },
+            { category: 'hotels', badge: 'Modern Luxury', name: 'Waldorf Astoria Beverly Hills', address: '9850 Wilshire Blvd, Beverly Hills, CA 90210', desc: 'Art Deco-inspired luxury hotel featuring La Prairie Spa and panoramic rooftop dining.', phone: '(310) 860-6666', tel: '+13108606666', url: 'https://www.waldorfastoriabeverlyhills.com' },
+            { category: 'hotels', badge: 'Boutique Luxury', name: 'The Maybourne Beverly Hills', address: '225 N Canon Dr, Beverly Hills, CA 90210', desc: 'Contemporary luxury sanctuary overlooking Beverly Canon Gardens with an expansive mineral pool spa.', phone: '(310) 860-7800', tel: '+13108607800', url: 'https://www.maybournebeverlyhills.com' },
+
+            // Dentistry, Hair & Concierge Services
+            { category: 'wellness', badge: 'Cosmetic Dentistry', name: 'Aesthetic Dental Beverly Hills', address: '416 N Bedford Dr, Suite 200, Beverly Hills, CA 90210', desc: 'Porcelain veneers, smile makeovers, and laser whitening for red-carpet smiles.', phone: '(310) 276-4537', tel: '+13102764537', url: 'https://www.beverlyhillsdentist.com' },
+            { category: 'wellness', badge: 'Celebrity Hair Salon', name: 'Christophe Salon Beverly Hills', address: '348 N Beverly Dr, Beverly Hills, CA 90210', desc: 'Iconic Beverly Drive salon offering bespoke styling, color artistry, and holiday event blowouts.', phone: '(310) 274-0851', tel: '+13102740851', url: 'https://www.christophesalon.com' },
+            { category: 'wellness', badge: 'Hair & Color Studio', name: 'José Eber Salon Beverly Hills', address: '360 N Camden Dr, Beverly Hills, CA 90210', desc: 'World-renowned hair salon delivering luxury cuts, extensions, and bridal/holiday styling.', phone: '(310) 278-7646', tel: '+13102787646', url: 'https://www.joseeber.com' },
+            { category: 'wellness', badge: 'Concierge Medicine', name: 'Beverly Hills Concierge Doctor', address: '9675 Brighton Way, Suite 350, Beverly Hills, CA 90210', desc: '24/7 house-call physicians, executive health panels, and private wellness care in 90210.', phone: '(310) 683-0180', tel: '+13106830180', url: 'https://www.beverlyhillsconciergedoctor.com' },
+            { category: 'wellness', badge: 'Artisan Florist', name: 'Empty Vase Florist', address: '9033 Santa Monica Blvd, West Hollywood / 90210', desc: 'Luxury holiday floral arrangements, custom wreaths, and event design for Beverly Hills estates.', phone: '(310) 278-1988', tel: '+13102781988', url: 'https://www.emptyvase.com' },
+            { category: 'wellness', badge: 'Chauffeur & Exotic', name: 'Beverly Hills Rent-A-Car', address: '9220 S Sepulveda / 90210 Delivery', desc: 'Exotic sports cars, luxury SUVs, and private airport transfers delivered directly to your 90210 hotel.', phone: '(310) 274-6969', tel: '+13102746969', url: 'https://www.bhrentacar.com' }
         ];
 
-        function renderListings(filter = 'all') {
+        let activeCategory = 'all';
+        let activeKeyword = '';
+
+        function renderListings() {
             const grid = document.getElementById('listings-grid');
+            const countAll = document.getElementById('count-all');
+            if (countAll) countAll.textContent = listings.length;
             if (!grid) return;
 
-            const filtered = filter === 'all' 
-                ? listings 
-                : listings.filter(item => item.category === filter);
+            const filtered = listings.filter(item => {
+                const matchesCat = activeCategory === 'all' || item.category === activeCategory;
+                const q = activeKeyword.toLowerCase().trim();
+                const matchesQuery = !q || 
+                    item.name.toLowerCase().includes(q) || 
+                    item.badge.toLowerCase().includes(q) || 
+                    item.address.toLowerCase().includes(q) || 
+                    item.desc.toLowerCase().includes(q);
+                return matchesCat && matchesQuery;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-white rounded-3xl border border-champagne-200">
+                        <i class="fa-solid fa-holly-berry text-crimson-600 text-2xl mb-2"></i>
+                        <p class="font-serif text-2xl font-bold text-slate-900">No matching 90210 listings found</p>
+                        <p class="text-xs text-slate-500 mt-1">Try clearing your filter or selecting "All Categories".</p>
+                    </div>
+                `;
+                return;
+            }
 
             grid.innerHTML = filtered.map(item => `
-                <div class="bg-obsidian-900 border border-white/10 hover:border-gold-400/60 rounded-2xl p-6 flex flex-col justify-between transition duration-300 shadow-xl group">
+                <div class="bg-white border border-champagne-200 hover:border-gold-400 rounded-2xl p-6 flex flex-col justify-between transition duration-300 shadow-sm hover:shadow-xl group">
                     <div>
                         <div class="flex items-center justify-between gap-2 mb-3">
-                            <span class="text-[10px] uppercase tracking-[0.2em] font-bold text-gold-300 bg-gold-400/10 border border-gold-400/25 px-3 py-1 rounded-full">
+                            <span class="text-[10px] uppercase tracking-[0.18em] font-bold text-evergreen-800 bg-evergreen-800/10 border border-evergreen-800/20 px-3 py-1 rounded-full">
                                 ${item.badge}
                             </span>
-                            <span class="text-[11px] text-neutral-500 font-medium">90210</span>
+                            <span class="text-[11px] text-crimson-700 font-bold">90210</span>
                         </div>
-                        <h3 class="font-serif text-2xl font-bold text-white group-hover:text-gold-200 transition mb-1.5">
+                        <h3 class="font-serif text-2xl font-bold text-slate-900 group-hover:text-crimson-700 transition mb-1.5">
                             ${item.name}
                         </h3>
-                        <p class="text-xs text-gold-300/80 mb-3 flex items-center gap-1.5">
-                            <i class="fa-solid fa-location-dot text-[10px]"></i>
+                        <p class="text-xs text-gold-600 font-semibold mb-3 flex items-center gap-1.5">
+                            <i class="fa-solid fa-location-dot text-[10px] text-crimson-600"></i>
                             <span>${item.address}</span>
                         </p>
-                        <p class="text-xs text-neutral-400 leading-relaxed mb-6">
+                        <p class="text-xs text-slate-600 leading-relaxed mb-6">
                             ${item.desc}
                         </p>
                     </div>
 
-                    <div class="pt-4 border-t border-white/10 grid grid-cols-2 gap-3">
-                        <a href="tel:${item.tel}" class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 text-neutral-200 text-xs font-semibold transition border border-white/10">
-                            <i class="fa-solid fa-phone text-gold-400 text-[11px]"></i>
+                    <div class="pt-4 border-t border-champagne-200 grid grid-cols-2 gap-3">
+                        <a href="tel:${item.tel}" class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-champagne-100 hover:bg-champagne-200 text-slate-900 text-xs font-bold transition border border-champagne-300">
+                            <i class="fa-solid fa-phone text-evergreen-800 text-[11px]"></i>
                             <span>${item.phone}</span>
                         </a>
-                        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-gold-400/15 hover:bg-gold-400 text-gold-200 hover:text-obsidian-950 text-xs font-semibold transition border border-gold-400/30">
-                            <span>Website</span>
+                        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-evergreen-800 hover:bg-crimson-700 text-white text-xs font-bold transition shadow-sm">
+                            <span>Visit Site</span>
                             <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                         </a>
                     </div>
@@ -469,21 +563,30 @@
         }
 
         function filterDirectory(category) {
-            // Update active button state
+            activeCategory = category;
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 if (btn.dataset.cat === category) {
-                    btn.classList.add('bg-gold-400', 'text-obsidian-950', 'border-gold-400');
-                    btn.classList.remove('bg-obsidian-900', 'text-neutral-300', 'border-white/15');
+                    btn.classList.add('bg-evergreen-800', 'text-white', 'shadow');
+                    btn.classList.remove('bg-champagne-100', 'text-slate-800');
                 } else {
-                    btn.classList.remove('bg-gold-400', 'text-obsidian-950', 'border-gold-400');
-                    btn.classList.add('bg-obsidian-900', 'text-neutral-300', 'border-white/15');
+                    btn.classList.remove('bg-evergreen-800', 'text-white', 'shadow');
+                    btn.classList.add('bg-champagne-100', 'text-slate-800');
                 }
             });
-            renderListings(category);
+            renderListings();
+        }
+
+        function handleKeywordFilter(val) {
+            activeKeyword = val;
+            renderListings();
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            renderListings('all');
+            updateBeverlyHillsClock();
+            setInterval(updateBeverlyHillsClock, 1000);
+            fetchBeverlyHillsWeather();
+            initHolidaySparkles();
+            renderListings();
         });
     </script>
 </body>
