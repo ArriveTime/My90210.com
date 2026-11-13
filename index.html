@@ -1,196 +1,490 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My90210.com | Beverly Hills, California — The City, Live</title>
-<meta name="description" content="Your front door to Beverly Hills: Rodeo Drive shopping, restaurants, beauty, cosmetic medicine, hair restoration, real estate, hotels, events, news, weather and traffic.">
-<meta name="theme-color" content="#101010">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{--ink:#111;--gold:#c7a66a;--gold2:#ead8b2;--paper:#f7f4ee;--muted:#6c6a66;--line:rgba(199,166,106,.3)}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;background:var(--paper);color:#222;font-family:'DM Sans',Arial,sans-serif}a{color:inherit}button,input{font:inherit}
-.top{background:#080808;color:#e6d7b8;text-align:center;padding:9px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase}
-header{position:sticky;top:0;z-index:20;background:rgba(14,14,14,.97);border-bottom:1px solid var(--line)}.nav{max-width:1400px;margin:auto;padding:15px 5%;display:flex;align-items:center;justify-content:space-between;gap:18px}.logo{font:700 30px 'Playfair Display',serif;color:var(--gold);text-decoration:none;white-space:nowrap}.logo span{color:#fff}.navlinks{display:flex;gap:17px;flex-wrap:wrap;justify-content:flex-end}.navlinks a{font-size:11px;color:#eee;text-transform:uppercase;letter-spacing:1px;text-decoration:none}.navlinks a:hover{color:var(--gold)}
-.hero{min-height:620px;display:grid;place-items:center;text-align:center;color:#fff;padding:70px 20px;background:linear-gradient(90deg,rgba(0,0,0,.57),rgba(0,0,0,.18),rgba(0,0,0,.56)),url('https://images.unsplash.com/photo-1707826765406-73897936d4c9?auto=format&fit=crop&fm=jpg&q=85&w=2400') center 48%/cover}
-.hero-inner{max-width:900px}.eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold2)}h1,h2,h3{font-family:'Playfair Display',Georgia,serif}.hero h1{font-size:clamp(48px,8vw,94px);line-height:1.02;margin:18px 0}.hero p{font-size:18px;line-height:1.7;color:#f3eee6}.rule{width:70px;height:2px;background:var(--gold);margin:22px auto}.search{max-width:690px;margin:30px auto 0;display:flex;background:#fff;padding:6px;border-radius:3px}.search input{flex:1;min-width:0;border:0;padding:15px;outline:none}.search button,.btn{background:var(--gold);border:0;padding:14px 22px;color:#171717;font-weight:700;text-decoration:none;cursor:pointer}.stats{display:grid;grid-template-columns:repeat(4,1fr);background:#171717;color:#fff;text-align:center}.stat{padding:21px 8px;border-right:1px solid var(--line)}.stat strong{display:block;color:var(--gold);font-size:18px}.stat span{font-size:10px;letter-spacing:1.5px;color:#bbb;text-transform:uppercase}
-section{padding:70px 5%}.wrap{max-width:1300px;margin:auto}.heading{text-align:center;margin-bottom:34px}.heading .eyebrow{color:#99763d}.heading h2{font-size:clamp(32px,5vw,47px);margin:10px 0;color:#171717}.heading p{max-width:760px;margin:auto;color:#666;line-height:1.7}.dark{background:#141414;color:#fff}.dark .heading h2{color:#fff}.dark .heading p{color:#bbb}.dark .heading .eyebrow{color:var(--gold)}
-.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.tile{height:190px;position:relative;overflow:hidden;background:#222;color:#fff;text-decoration:none;display:flex;align-items:flex-end;padding:20px}.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.4s}.tile:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85),transparent 75%)}.tile:hover img{transform:scale(1.06)}.tile div{z-index:1}.tile h3{font-size:22px;margin:0 0 5px}.tile small{color:var(--gold2);text-transform:uppercase;letter-spacing:1.4px;font-size:10px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.biz{background:#fff;color:#222;padding:21px;border:1px solid #e4ddd0;box-shadow:0 4px 16px rgba(0,0,0,.04);display:flex;flex-direction:column;min-height:205px}.dark .biz{background:#202020;color:#fff;border-color:var(--line)}.biz .kind{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#98733b;font-weight:700}.biz h3{font-size:21px;margin:8px 0 7px;color:inherit}.biz p{font-size:13px;line-height:1.55;color:#666;margin:3px 0}.dark .biz p{color:#bbb}.biz .links{display:flex;gap:14px;flex-wrap:wrap;margin-top:auto;padding-top:15px}.biz .links a{font-size:11px;font-weight:700;text-decoration:none;color:#89652d}.dark .biz .links a{color:var(--gold2)}.biz .links a:hover{text-decoration:underline}.note{font-size:11px;color:#888;line-height:1.65;margin-top:20px}.dark .note{color:#aaa}
-.pills{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:20px 0 28px}.pill{border:1px solid #bda77d;background:transparent;padding:9px 14px;font-size:11px;letter-spacing:1px;text-transform:uppercase;cursor:pointer}.pill.active,.pill:hover{background:#171717;color:var(--gold2)}.dark .pill.active,.dark .pill:hover{background:var(--gold);color:#111}.livegrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.livebox{background:#202020;color:#fff;padding:27px;border:1px solid var(--line)}.livebox h3{font-size:25px;color:var(--gold2);margin:0 0 12px}.big{font-size:36px;font-weight:700;margin:12px 0}.livebox p{font-size:13px;line-height:1.7;color:#bbb}.livebox a{color:var(--gold2)}.news{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.news article{background:#202020;padding:19px;border-left:3px solid var(--gold)}.news a{color:#fff;font-weight:700;text-decoration:none}.news p{color:#aaa;font-size:12px}.eventlinks{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.event-date{display:inline-block;background:var(--gold);color:#171717;padding:7px 10px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase}.directory-portal{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:25px auto}.directory-portal a{display:inline-block;background:var(--gold);color:#171717;padding:13px 18px;text-decoration:none;font-size:12px;font-weight:700}.directory-portal a.secondary{background:transparent;color:var(--gold2);border:1px solid var(--gold)}.event .event-date{margin-bottom:8px}.biz .kind{line-height:1.4}.event{padding:23px;background:#202020;border:1px solid var(--line)}.event h3{color:var(--gold2);font-size:21px}.event p{color:#bbb;font-size:13px;line-height:1.6}.event a{color:var(--gold2);font-size:12px}
-.callout{background:#e9e0d0;padding:42px;text-align:center;border:1px solid #d3c2a0}.callout h2{font-size:36px;margin:8px}.callout p{color:#555;line-height:1.7}footer{background:#090909;color:#aaa;padding:48px 5% 22px}.footgrid{max-width:1300px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}footer h3{color:var(--gold)}footer a{display:block;text-decoration:none;color:#bbb;font-size:13px;margin:9px 0}.legal{max-width:1300px;margin:28px auto 0;border-top:1px solid #333;padding-top:20px;font-size:11px;line-height:1.7}
-@media(max-width:900px){.navlinks{display:none}.tiles{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.hero{min-height:530px}.stats{grid-template-columns:repeat(2,1fr)}section{padding:52px 5%}.tiles,.cards,.livegrid,.news,.eventlinks,.footgrid{grid-template-columns:1fr}.search{flex-direction:column}.search button{width:100%}.callout{padding:28px 16px}}
-</style></head>
-<body>
-<div class="top">Beverly Hills, California · The 90210 City Guide</div>
-<header><div class="nav"><a class="logo" href="#top">MY<span>90210</span>.COM</a><nav class="navlinks"><a href="#discover">Discover</a><a href="#shopping">Shopping</a><a href="#allbusinesses">Business Directory</a><a href="#dining">Dining</a><a href="#beauty">Beauty</a><a href="#health">Health</a><a href="#homes">Real Estate</a><a href="#events">Events</a><a href="#live">Live</a></nav></div></header>
-<main id="top">
-<section class="hero"><div class="hero-inner"><div class="eyebrow">The Beverly Hills Experience</div><h1>BEVERLY HILLS.<br>BEYOND EXPECTATIONS.</h1><div class="rule"></div><p>Your front door to 90210 — the people, places, businesses, experiences and stories that make Beverly Hills extraordinary.</p><div class="search"><input id="q" type="search" placeholder="Search businesses, restaurants, salons, events and more" aria-label="Search My90210"><button onclick="searchDirectory()">SEARCH 90210</button></div></div></section>
-<div class="stats"><div class="stat"><strong id="clock">--:--</strong><span>Beverly Hills Time</span></div><div class="stat"><strong id="date">Loading</strong><span>Today</span></div><div class="stat"><strong id="temp">--°F</strong><span>Current Weather</span></div><div class="stat"><strong>90210</strong><span>Beverly Hills, California</span></div></div>
-<section id="discover"><div class="wrap"><div class="heading"><div class="eyebrow">Explore the City</div><h2>One City. Countless Experiences.</h2><p>More than a shopping destination. Discover the businesses, neighborhoods, culture, services and local information that make Beverly Hills a world-famous city.</p></div><div class="tiles">
-<a class="tile" href="#shopping"><img src="https://images.unsplash.com/photo-1707826765406-73897936d4c9?auto=format&fit=crop&w=700&q=80" alt="Palm-lined Rodeo Drive"><div><h3>Luxury Shopping</h3><small>Rodeo Drive & Golden Triangle</small></div></a>
-<a class="tile" href="#dining"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&q=80" alt="Fine dining"><div><h3>Fine Dining</h3><small>Restaurants & cafés</small></div></a>
-<a class="tile" href="#beauty"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=700&q=80" alt="Hair salon"><div><h3>Beauty & Salons</h3><small>Hair, skin & wellness</small></div></a>
-<a class="tile" href="#health"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=700&q=80" alt="Medical consultation"><div><h3>Aesthetic Medicine</h3><small>Cosmetic & dermatology</small></div></a>
-<a class="tile" href="#hair"><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80" alt="Hair styling"><div><h3>Hair Restoration</h3><small>Men & women</small></div></a>
-<a class="tile" href="#homes"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=80" alt="Luxury home"><div><h3>Luxury Real Estate</h3><small>Homes & properties</small></div></a>
-<a class="tile" href="#hotels"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=700&q=80" alt="Luxury hotel"><div><h3>Hotels & Spas</h3><small>Stay in style</small></div></a>
-<a class="tile" href="#events"><img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=700&q=80" alt="Event venue"><div><h3>Events & Culture</h3><small>What's happening in 90210</small></div></a>
-</div></div></section>
-<section id="shopping" class="dark"><div class="wrap"><div class="heading"><div class="eyebrow">The World's Famous Shopping Destination</div><h2>Rodeo Drive & Luxury Shopping</h2><p>Named retailers, clear business cards and direct links. The listings below use current published business-directory details; always confirm before visiting.</p></div><div class="cards" id="shoppingCards"></div><div class="directory-portal"><a href="https://visit.rodeo/businesses" target="_blank" rel="noopener">BROWSE ALL 385 LOCAL BUSINESS LISTINGS ↗</a><a class="secondary" href="https://www.rodeodrive-bh.com/directory" target="_blank" rel="noopener">OFFICIAL RODEO DRIVE DIRECTORY ↗</a><a class="secondary" href="https://drive.rodeo/map" target="_blank" rel="noopener">EXPLORE INTERACTIVE BUSINESS MAP ↗</a></div><p class="note">This is a curated selection, not every shop in Beverly Hills. Browse the <a href="https://visit.rodeo/businesses" target="_blank" rel="noopener">385-business local directory</a> or the <a href="https://www.rodeodrive-bh.com/directory" target="_blank" rel="noopener">official Rodeo Drive Committee directory</a> for the broader list. <a href="https://lovebeverlyhills.com/shopping" target="_blank" rel="noopener">Love Beverly Hills shopping guide</a>.</p></div></section>
-<section id="allbusinesses" class="dark"><div class="wrap"><div class="heading"><div class="eyebrow">Beyond the Famous Three Blocks</div><h2>The Beverly Hills Business Directory</h2><p>Our goal is to grow My90210 into a searchable guide to the businesses that serve Beverly Hills: retail, dining, hotels, professional services, health and beauty, galleries, specialty shops and neighborhood favorites.</p></div><div class="eventlinks"><div class="event"><h3>385 Local Listings</h3><p>The Visit Rodeo directory currently lists 385 businesses on and around Rodeo Drive, including shops, restaurants, galleries and services.</p><a href="https://visit.rodeo/businesses" target="_blank" rel="noopener">BROWSE 385 BUSINESSES →</a></div><div class="event"><h3>Rodeo Drive Committee</h3><p>Official directory of Rodeo Drive Committee member businesses, retailers, restaurants, hotels and galleries.</p><a href="https://www.rodeodrive-bh.com/directory" target="_blank" rel="noopener">OFFICIAL DIRECTORY →</a></div><div class="event"><h3>Interactive Business Map</h3><p>Explore hundreds of shops, restaurants, galleries and points of interest around Rodeo Drive.</p><a href="https://drive.rodeo/map" target="_blank" rel="noopener">OPEN BUSINESS MAP →</a></div></div><p class="note">The 385 figure belongs to the external Visit Rodeo directory and is not a claim that all 385 records are imported into My90210. My90210's own listings are curated and will expand as business names, locations and contact details are verified.</p></div></section>
-<section id="dining"><div class="wrap"><div class="heading"><div class="eyebrow">The Beverly Hills Table</div><h2>Restaurants & Fine Dining</h2><p>Iconic dining rooms, destination restaurants, neighborhood favorites and cafés.</p></div><div class="cards" id="diningCards"></div></div></section>
-<section id="beauty" class="dark"><div class="wrap"><div class="heading"><div class="eyebrow">Look & Feel Your Best</div><h2>Salons, Beauty & Wellness</h2><p>Named local salons and wellness destinations, with clear business names and direct website links.</p></div><div class="cards" id="beautyCards"></div></div></section>
-<section id="health"><div class="wrap"><div class="heading"><div class="eyebrow">Aesthetic Medicine</div><h2>Cosmetic Surgery & Dermatology</h2><p>Explore medical practices and professional resources. Verify physician licensing, board certification, facility accreditation and treatment suitability independently.</p></div><div class="cards" id="healthCards"></div><p class="note">Informational directory only; no endorsement or medical advice. For California physician license verification use the <a href="https://www.mbc.ca.gov/License-Verification/" target="_blank" rel="noopener">Medical Board of California license lookup</a>.</p></div></section>
-<section id="hair" class="dark"><div class="wrap"><div class="heading"><div class="eyebrow">Hair & Confidence</div><h2>Hair Restoration for Men & Women</h2><p>Hair transplant and restoration providers plus independent professional resources.</p></div><div class="cards" id="hairCards"></div><p class="note">Hair restoration is a medical service. Check provider credentials and discuss risks, alternatives and expected outcomes with a qualified physician.</p></div></section>
-<section id="homes"><div class="wrap"><div class="heading"><div class="eyebrow">Exceptional Properties</div><h2>Beverly Hills Luxury Real Estate</h2><p>Connect with established brokerages and search their current property listings directly.</p></div><div class="cards" id="homeCards"></div></div></section>
-<section id="hotels" class="dark"><div class="wrap"><div class="heading"><div class="eyebrow">Stay in Beverly Hills</div><h2>Hotels, Resorts & Spas</h2><p>Iconic hotels and luxury hospitality in and around Beverly Hills.</p></div><div class="cards" id="hotelCards"></div></div></section>
-<section id="events"><div class="wrap"><div class="heading"><div class="eyebrow">The 90210 Social Calendar</div><h2>Beverly Hills Events & Community Calendar</h2><p>Upcoming city celebrations, arts performances, seasonal events, community gatherings and things to do. Event dates can change; always confirm details with the organizer before attending.</p></div><div class="eventlinks">
-<div class="event"><span class="event-date">November 19, 2026 · 5:00 PM</span><h3>Rodeo Drive Holiday Lighting Celebration</h3><p>Annual holiday kickoff on Rodeo Drive, with festive decorations, live entertainment, Santa Claus and a fireworks finale. Reported as free and open to the public.</p><a href="https://lovebeverlyhills.com/itineraries/view/things-to-do-on-rodeo-drive" target="_blank" rel="noopener">EVENT DETAILS & CONFIRMATION →</a></div>
-<div class="event"><span class="event-date">Official Calendar</span><h3>City of Beverly Hills Events</h3><p>Community events, city programs, public meetings, cultural activities and seasonal celebrations.</p><a href="https://www.beverlyhills.org/Calendar.aspx" target="_blank" rel="noopener">OPEN CITY CALENDAR →</a></div>
-<div class="event"><span class="event-date">Arts & Culture</span><h3>The Wallis Annenberg Center</h3><p>Performing arts, theatre, music, dance, talks and special cultural programming in Beverly Hills.</p><a href="https://thewallis.org/events/" target="_blank" rel="noopener">VIEW PERFORMANCE CALENDAR →</a></div>
-<div class="event"><span class="event-date">Historic Beverly Hills</span><h3>Greystone Mansion & Gardens</h3><p>Explore the historic estate, public gardens, tours, cultural programs and special events.</p><a href="https://www.beverlyhills.org/greystone" target="_blank" rel="noopener">VISIT GREYSTONE →</a></div>
-<div class="event"><span class="event-date">Shopping & Seasonal Events</span><h3>Rodeo Drive Events</h3><p>Luxury shopping events, street celebrations, seasonal programming and special experiences.</p><a href="https://www.rodeodrive-bh.com/events" target="_blank" rel="noopener">VIEW RODEO DRIVE EVENTS →</a></div>
-<div class="event"><span class="event-date">Visitor Calendar</span><h3>Love Beverly Hills</h3><p>Discover local attractions, visitor experiences, itineraries, seasonal highlights and community happenings.</p><a href="https://lovebeverlyhills.com/events" target="_blank" rel="noopener">EXPLORE BEVERLY HILLS EVENTS →</a></div>
-<div class="event"><span class="event-date">Weekly Community Market</span><h3>Beverly Hills Farmers' Market</h3><p>Community market information, seasonal produce, local vendors and family-friendly activities. Check the city's current schedule before visiting.</p><a href="https://www.beverlyhills.org/" target="_blank" rel="noopener">CITY INFORMATION →</a></div>
-<div class="event"><span class="event-date">City Meetings & Public Notices</span><h3>Public Meetings & Civic Life</h3><p>City Council, commissions, boards, public hearings and opportunities to participate in local government.</p><a href="https://www.beverlyhills.org/Calendar.aspx" target="_blank" rel="noopener">MEETINGS & AGENDAS →</a></div>
-<div class="event"><span class="event-date">Discover More</span><h3>Events Around Beverly Hills</h3><p>Search current exhibitions, food events, entertainment, nightlife and special events across the city.</p><a href="https://www.google.com/search?q=Beverly+Hills+events+November+2026" target="_blank" rel="noopener">SEARCH CURRENT EVENTS →</a></div>
-</div><p class="note">My90210.com is an independent guide. Event listings are not ticket sales or guarantees of availability. Confirm event date, time, venue, admission and accessibility with the organizer.</p></div></section>
-<section id="live" class="dark"><div class="wrap"><div class="heading"><div class="eyebrow">Your City, Right Now</div><h2>90210 Live</h2><p>Local time, current weather, live traffic resources and fresh local headlines.</p></div><div class="livegrid">
-<div class="livebox"><h3>Weather in Beverly Hills</h3><div class="big" id="weatherTemp">Loading…</div><p id="weatherText">Retrieving current conditions…</p><p id="weatherExtra"></p><a href="https://forecast.weather.gov/MapClick.php?lat=34.0736&lon=-118.4004" target="_blank" rel="noopener">National Weather Service forecast →</a></div>
-<div class="livebox"><h3>Live Traffic & Road Conditions</h3><p>Open a live traffic map centered on Beverly Hills. Check congestion, incidents and travel times before leaving.</p><p><a href="https://www.google.com/maps/@34.0736,-118.4004,14z/data=!5m1!1e1" target="_blank" rel="noopener">GOOGLE MAPS LIVE TRAFFIC →</a></p><p><a href="https://quickmap.dot.ca.gov/" target="_blank" rel="noopener">CALTRANS ROAD CONDITIONS →</a></p><p><a href="https://www.beverlyhills.org/" target="_blank" rel="noopener">CITY OF BEVERLY HILLS →</a></p></div>
-</div><div class="heading" style="margin-top:55px"><div class="eyebrow">Latest Headlines</div><h2>Beverly Hills News</h2><p>Headlines are loaded from a public news search feed. Select a story to read it at the original publisher.</p></div><div class="news" id="newsCards"><article><a href="https://www.google.com/search?tbm=nws&q=Beverly+Hills+California" target="_blank" rel="noopener">Open current Beverly Hills news results</a><p>News feed loading…</p></article></div><p class="note" id="newsStatus">Attempting to load headlines… If the feed service is unavailable, use the direct news search link.</p></div></section>
-<section><div class="wrap"><div class="callout"><div class="eyebrow">The 90210 Connection</div><h2>Everything Beverly Hills. One Destination.</h2><p>My90210.com is being developed as an independent online front door to the city — connecting residents, visitors and businesses with the places, services and information they need.</p><a class="btn" href="#discover">EXPLORE MY90210</a></div></div></section>
-</main>
-<footer><div class="footgrid"><div><a class="logo" href="#top">MY<span>90210</span>.COM</a><p style="max-width:440px;line-height:1.8;font-size:13px">The independent Beverly Hills city guide for shopping, dining, services, lifestyle, events, local news and useful city information.</p></div><div><h3>Explore</h3><a href="#shopping">Rodeo Drive</a><a href="#allbusinesses">Business Directory</a><a href="#dining">Restaurants</a><a href="#beauty">Beauty & Salons</a><a href="#health">Cosmetic Medicine</a><a href="#hair">Hair Restoration</a></div><div><h3>City Guide</h3><a href="#homes">Real Estate</a><a href="#hotels">Hotels</a><a href="#events">Events</a><a href="#live">Weather & Traffic</a><a href="#live">News</a></div></div><div class="legal">MY90210.COM is an independent informational website and is not affiliated with or endorsed by the City of Beverly Hills, the Rodeo Drive Committee, or any business listed. Business names and trademarks belong to their respective owners. Listings are provided for convenience, may change, and should be confirmed directly with each business. No medical, legal, financial or real-estate advice is provided. External websites and feeds are controlled by their respective operators. © <span id="year"></span> My90210.com.</div></footer>
-<script>
-const D={
-shopping:[
-['Chanel','Luxury fashion','400 N Rodeo Drive, Beverly Hills, CA 90210','310-278-5500','https://www.chanel.com/'],
-['Dior','Luxury fashion','323 N Rodeo Drive, Beverly Hills, CA 90210','310-859-4700','https://www.dior.com/'],
-['Gucci','Luxury fashion','347 N Rodeo Drive, Beverly Hills, CA 90210','310-278-3451','https://www.gucci.com/'],
-['Louis Vuitton Men’s','Luxury fashion','420 N Rodeo Drive, Beverly Hills, CA 90210','310-309-6006','https://us.louisvuitton.com/'],
-['Hermès','Luxury fashion & leather goods','434 N Rodeo Drive, Beverly Hills, CA 90210','310-278-6440','https://www.hermes.com/'],
-['Saint Laurent','Luxury fashion','326 N Rodeo Drive, Beverly Hills, CA 90210','310-271-5051','https://www.ysl.com/'],
-['Bottega Veneta','Luxury fashion & leather goods','320 N Rodeo Drive, Beverly Hills, CA 90210','310-858-6533','https://www.bottegaveneta.com/'],
-['Burberry','Luxury fashion','301 N Rodeo Drive, Beverly Hills, CA 90210','310-550-4500','https://us.burberry.com/'],
-['Tom Ford','Luxury fashion','346 N Rodeo Drive, Beverly Hills, CA 90210','310-270-9440','https://www.tomford.com/'],
-['Valentino','Luxury fashion','324 N Rodeo Drive, Beverly Hills, CA 90210','310-247-0103','https://www.valentino.com/'],
-['Van Cleef & Arpels','Fine jewelry','300 N Rodeo Drive, Beverly Hills, CA 90210','310-276-1161','https://www.vancleefarpels.com/'],
-['Harry Winston','Fine jewelry','310 N Rodeo Drive, Beverly Hills, CA 90210','310-278-8500','https://www.harrywinston.com/'],
-['Brunello Cucinelli','Luxury fashion','220 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.brunellocucinelli.com/'],
-['Brioni','Luxury menswear','459 N Rodeo Drive, Beverly Hills, CA 90210','310-271-1300','https://www.brioni.com/'],
-['Alexander McQueen','Luxury fashion','457 N Rodeo Drive, Beverly Hills, CA 90210','323-782-4983','https://www.alexandermcqueen.com/'],
-['Amiri','Luxury fashion','461 N Rodeo Drive, Beverly Hills, CA 90210','','https://amiri.com/'],
-['Audemars Piguet','Luxury watches','254 N Rodeo Drive, Beverly Hills, CA 90210','310-247-8182','https://www.audemarspiguet.com/'],
-['Breguet','Luxury watches','280 N Rodeo Drive, Beverly Hills, CA 90210','310-860-9911','https://www.breguet.com/'],
-['Breitling','Luxury watches','216 N Rodeo Drive, Beverly Hills, CA 90210','310-692-7800','https://www.breitling.com/'],
-['Dolce & Gabbana','Luxury fashion','248 N Rodeo Drive, Beverly Hills, CA 90210','310-888-8701','https://www.dolcegabbana.com/'],
-['Golden Goose','Luxury footwear & fashion','238 N Rodeo Drive, Beverly Hills, CA 90210','310-734-7240','https://www.goldengoose.com/'],
-['Panerai','Luxury watches','441 N Rodeo Drive, Beverly Hills, CA 90210','310-228-1515','https://www.panerai.com/'],
-['Persol','Eyewear','256 N Rodeo Drive, Beverly Hills, CA 90210','310-275-1999','https://www.persol.com/'],
-['Salvatore Ferragamo','Luxury fashion & footwear','357 N Rodeo Drive, Beverly Hills, CA 90210','310-273-9990','https://www.ferragamo.com/'],
-['Two Rodeo Drive','Luxury shopping promenade','9480 Dayton Way, Beverly Hills, CA 90210','310-247-7040','https://www.rodeodrive-bh.com/'],
-['Rodeo Collection','Luxury shopping center','421 N Rodeo Drive, Beverly Hills, CA 90210','310-276-9600','https://www.rodeodrive-bh.com/'],
-['Audemars Piguet','Luxury watches','254 N Rodeo Drive, Beverly Hills, CA 90210','310-247-8182','https://www.audemarspiguet.com/'],
-['Cartier','Fine jewelry & watches','411 N Rodeo Drive, Beverly Hills, CA 90210','310-275-4272','https://www.cartier.com/'],
-['Celine','Luxury fashion','309 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.celine.com/'],
-['Loewe','Luxury fashion & leather goods','327 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.loewe.com/'],
-['Givenchy','Luxury fashion','Anderton Court, 332 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.givenchy.com/'],
-['Fendi','Luxury fashion','201 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.fendi.com/'],
-['Giorgio Armani','Luxury fashion','436 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.armani.com/'],
-['Jimmy Choo','Luxury footwear','240 N Rodeo Drive, Beverly Hills, CA 90210','','https://us.jimmychoo.com/'],
-['Loro Piana','Luxury fashion','455 N Rodeo Drive, Beverly Hills, CA 90210','','https://us.loropiana.com/'],
-['Moncler','Luxury fashion & outerwear','338 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.moncler.com/'],
-['Prada','Luxury fashion','343 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.prada.com/'],
-['Ralph Lauren','Luxury fashion','444 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.ralphlauren.com/'],
-['Tiffany & Co.','Fine jewelry','Rodeo Drive, Beverly Hills, CA 90210','','https://www.tiffany.com/'],
-['Tod’s','Luxury footwear & leather goods','333 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.tods.com/'],
-['Tory Burch','Fashion & accessories','366 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.toryburch.com/'],
-['Zegna','Luxury menswear','Beverly Hills, CA 90210','','https://www.zegna.com/'],
-['Aesop','Skincare & beauty','321 N Beverly Drive, Beverly Hills, CA 90210','424-512-9030','https://www.aesop.com/'],
-['18 Karat Appraisers','Jewelry appraisal','9454 Wilshire Blvd, Suite M-12, Beverly Hills, CA 90212','310-278-1022','https://visit.rodeo/businesses'],
-['90210 Watches','Luxury watches','369 N Camden Drive, Beverly Hills, CA 90210','424-276-1457','https://visit.rodeo/businesses'],
-['Abel Richard','Handbags & fashion','236 N Rodeo Drive, Beverly Hills, CA 90210','424-519-2235','https://abelrichard.com/'],
-['A.L.C.','Women’s fashion boutique','352 N Beverly Drive, Beverly Hills, CA 90210','','https://alcltd.com/'],
-['Alice + Olivia','Fashion boutique','410 N Beverly Drive, Beverly Hills, CA 90210','310-341-2870','https://www.aliceandolivia.com/'],
-['AllSaints','Fashion boutique','422 N Beverly Drive, Beverly Hills, CA 90210','310-499-0970','https://www.allsaints.com/'],
-['Alfred Coffee Canon Drive','Coffee shop','319 N Canon Drive, Beverly Hills, CA 90212','424-544-5100','https://alfred.la/'],
-['andSons Chocolatiers','Chocolatier','9548 Brighton Way, Beverly Hills, CA 90210','310-276-2776','https://and-sons.com/'],
-['Beverly Cañon Gardens','Public garden & event venue','241 N Canon Drive, Beverly Hills, CA 90210','310-285-6830','https://www.beverlyhills.org/']
-],
-dining:[
-['The Grill on the Alley','American steakhouse','9560 Dayton Way, Beverly Hills, CA 90210','','https://www.thegrill.com/'],
-['Mr Chow','Chinese fine dining','344 N Camden Drive, Beverly Hills, CA 90210','310-278-9911','https://www.mrchow.com/'],
-['Spago Beverly Hills','California fine dining','176 N Canon Drive, Beverly Hills, CA 90210','310-385-0880','https://wolfgangpuck.com/'],
-['CUT by Wolfgang Puck','Steakhouse','Beverly Wilshire, 9500 Wilshire Blvd, Beverly Hills, CA 90212','310-276-8500','https://www.wolfgangpuck.com/'],
-  <div class="event"><span class="event-date">Discover More</span><h3>Events Around Beverly Hills</h3><p>Search current exhibitions, food events, entertainment, nightlife and special events across the city.</p><a href="https://www.google.com/search?q=Beverly+Hills+events+November+2026" target="_blank" rel="noopener">SEARCH CURRENT EVENTS →</a></div>
-</div><p class="note">My90210.com is an independent guide. Event listings are not ticket sales or guarantees of availability. Confirm event date, time, venue, admission and accessibility with the organizer.</p></div></section>
-<section id="live" class="dark"><div class="wrap"><div class="heading"><div class="eyebrow">Your City, Right Now</div><h2>90210 Live</h2><p>Local time, current weather, live traffic resources and fresh local headlines.</p></div><div class="livegrid">
-<div class="livebox"><h3>Weather in Beverly Hills</h3><div class="big" id="weatherTemp">Loading…</div><p id="weatherText">Retrieving current conditions…</p><p id="weatherExtra"></p><a href="https://forecast.weather.gov/MapClick.php?lat=34.0736&lon=-118.4004" target="_blank" rel="noopener">National Weather Service forecast →</a></div>
-<div class="livebox"><h3>Live Traffic & Road Conditions</h3><p>Open a live traffic map centered on Beverly Hills. Check congestion, incidents and travel times before leaving.</p><p><a href="https://www.google.com/maps/@34.0736,-118.4004,14z/data=!5m1!1e1" target="_blank" rel="noopener">GOOGLE MAPS LIVE TRAFFIC →</a></p><p><a href="https://quickmap.dot.ca.gov/" target="_blank" rel="noopener">CALTRANS ROAD CONDITIONS →</a></p><p><a href="https://www.beverlyhills.org/" target="_blank" rel="noopener">CITY OF BEVERLY HILLS →</a></p></div>
-</div><div class="heading" style="margin-top:55px"><div class="eyebrow">Latest Headlines</div><h2>Beverly Hills News</h2><p>Headlines are loaded from a public news search feed. Select a story to read it at the original publisher.</p></div><div class="news" id="newsCards"><article><a href="https://www.google.com/search?tbm=nws&q=Beverly+Hills+California" target="_blank" rel="noopener">Open current Beverly Hills news results</a><p>News feed loading…</p></article></div><p class="note" id="newsStatus">Attempting to load headlines… If the feed service is unavailable, use the direct news search link.</p></div></section>
-<section><div class="wrap"><div class="callout"><div class="eyebrow">The 90210 Connection</div><h2>Everything Beverly Hills. One Destination.</h2><p>My90210.com is being developed as an independent online front door to the city — connecting residents, visitors and businesses with the places, services and information they need.</p><a class="btn" href="#discover">EXPLORE MY90210</a></div></div></section>
-</main>
-<footer><div class="footgrid"><div><a class="logo" href="#top">MY<span>90210</span>.COM</a><p style="max-width:440px;line-height:1.8;font-size:13px">The independent Beverly Hills city guide for shopping, dining, services, lifestyle, events, local news and useful city information.</p></div><div><h3>Explore</h3><a href="#shopping">Rodeo Drive</a><a href="#allbusinesses">Business Directory</a><a href="#dining">Restaurants</a><a href="#beauty">Beauty & Salons</a><a href="#health">Cosmetic Medicine</a><a href="#hair">Hair Restoration</a></div><div><h3>City Guide</h3><a href="#homes">Real Estate</a><a href="#hotels">Hotels</a><a href="#events">Events</a><a href="#live">Weather & Traffic</a><a href="#live">News</a></div></div><div class="legal">MY90210.COM is an independent informational website and is not affiliated with or endorsed by the City of Beverly Hills, the Rodeo Drive Committee, or any business listed. Business names and trademarks belong to their respective owners. Listings are provided for convenience, may change, and should be confirmed directly with each business. No medical, legal, financial or real-estate advice is provided. External websites and feeds are controlled by their respective operators. © <span id="year"></span> My90210.com.</div></footer>
-<script>
-const D={
-shopping:[
-['Chanel','Luxury fashion','400 N Rodeo Drive, Beverly Hills, CA 90210','310-278-5500','https://www.chanel.com/'],
-['Dior','Luxury fashion','323 N Rodeo Drive, Beverly Hills, CA 90210','310-859-4700','https://www.dior.com/'],
-['Gucci','Luxury fashion','347 N Rodeo Drive, Beverly Hills, CA 90210','310-278-3451','https://www.gucci.com/'],
-['Louis Vuitton Men’s','Luxury fashion','420 N Rodeo Drive, Beverly Hills, CA 90210','310-309-6006','https://us.louisvuitton.com/'],
-['Hermès','Luxury fashion & leather goods','434 N Rodeo Drive, Beverly Hills, CA 90210','310-278-6440','https://www.hermes.com/'],
-['Saint Laurent','Luxury fashion','326 N Rodeo Drive, Beverly Hills, CA 90210','310-271-5051','https://www.ysl.com/'],
-['Bottega Veneta','Luxury fashion & leather goods','320 N Rodeo Drive, Beverly Hills, CA 90210','310-858-6533','https://www.bottegaveneta.com/'],
-['Burberry','Luxury fashion','301 N Rodeo Drive, Beverly Hills, CA 90210','310-550-4500','https://us.burberry.com/'],
-['Tom Ford','Luxury fashion','346 N Rodeo Drive, Beverly Hills, CA 90210','310-270-9440','https://www.tomford.com/'],
-['Valentino','Luxury fashion','324 N Rodeo Drive, Beverly Hills, CA 90210','310-247-0103','https://www.valentino.com/'],
-['Van Cleef & Arpels','Fine jewelry','300 N Rodeo Drive, Beverly Hills, CA 90210','310-276-1161','https://www.vancleefarpels.com/'],
-['Harry Winston','Fine jewelry','310 N Rodeo Drive, Beverly Hills, CA 90210','310-278-8500','https://www.harrywinston.com/'],
-['Brunello Cucinelli','Luxury fashion','220 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.brunellocucinelli.com/'],
-['Brioni','Luxury menswear','459 N Rodeo Drive, Beverly Hills, CA 90210','310-271-1300','https://www.brioni.com/'],
-['Alexander McQueen','Luxury fashion','457 N Rodeo Drive, Beverly Hills, CA 90210','323-782-4983','https://www.alexandermcqueen.com/'],
-['Amiri','Luxury fashion','461 N Rodeo Drive, Beverly Hills, CA 90210','','https://amiri.com/'],
-['Audemars Piguet','Luxury watches','254 N Rodeo Drive, Beverly Hills, CA 90210','310-247-8182','https://www.audemarspiguet.com/'],
-['Breguet','Luxury watches','280 N Rodeo Drive, Beverly Hills, CA 90210','310-860-9911','https://www.breguet.com/'],
-['Breitling','Luxury watches','216 N Rodeo Drive, Beverly Hills, CA 90210','310-692-7800','https://www.breitling.com/'],
-['Dolce & Gabbana','Luxury fashion','248 N Rodeo Drive, Beverly Hills, CA 90210','310-888-8701','https://www.dolcegabbana.com/'],
-['Golden Goose','Luxury footwear & fashion','238 N Rodeo Drive, Beverly Hills, CA 90210','310-734-7240','https://www.goldengoose.com/'],
-['Panerai','Luxury watches','441 N Rodeo Drive, Beverly Hills, CA 90210','310-228-1515','https://www.panerai.com/'],
-['Persol','Eyewear','256 N Rodeo Drive, Beverly Hills, CA 90210','310-275-1999','https://www.persol.com/'],
-['Salvatore Ferragamo','Luxury fashion & footwear','357 N Rodeo Drive, Beverly Hills, CA 90210','310-273-9990','https://www.ferragamo.com/'],
-['Two Rodeo Drive','Luxury shopping promenade','9480 Dayton Way, Beverly Hills, CA 90210','310-247-7040','https://www.rodeodrive-bh.com/'],
-['Rodeo Collection','Luxury shopping center','421 N Rodeo Drive, Beverly Hills, CA 90210','310-276-9600','https://www.rodeodrive-bh.com/'],
-['Audemars Piguet','Luxury watches','254 N Rodeo Drive, Beverly Hills, CA 90210','310-247-8182','https://www.audemarspiguet.com/'],
-['Cartier','Fine jewelry & watches','411 N Rodeo Drive, Beverly Hills, CA 90210','310-275-4272','https://www.cartier.com/'],
-['Celine','Luxury fashion','309 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.celine.com/'],
-['Loewe','Luxury fashion & leather goods','327 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.loewe.com/'],
-['Givenchy','Luxury fashion','Anderton Court, 332 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.givenchy.com/'],
-['Fendi','Luxury fashion','201 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.fendi.com/'],
-['Giorgio Armani','Luxury fashion','436 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.armani.com/'],
-['Jimmy Choo','Luxury footwear','240 N Rodeo Drive, Beverly Hills, CA 90210','','https://us.jimmychoo.com/'],
-['Loro Piana','Luxury fashion','455 N Rodeo Drive, Beverly Hills, CA 90210','','https://us.loropiana.com/'],
-['Moncler','Luxury fashion & outerwear','338 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.moncler.com/'],
-['Prada','Luxury fashion','343 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.prada.com/'],
-['Ralph Lauren','Luxury fashion','444 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.ralphlauren.com/'],
-['Tiffany & Co.','Fine jewelry','Rodeo Drive, Beverly Hills, CA 90210','','https://www.tiffany.com/'],
-['Tod’s','Luxury footwear & leather goods','333 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.tods.com/'],
-['Tory Burch','Fashion & accessories','366 N Rodeo Drive, Beverly Hills, CA 90210','','https://www.toryburch.com/'],
-['Zegna','Luxury menswear','Beverly Hills, CA 90210','','https://www.zegna.com/'],
-['Aesop','Skincare & beauty','321 N Beverly Drive, Beverly Hills, CA 90210','424-512-9030','https://www.aesop.com/'],
-['18 Karat Appraisers','Jewelry appraisal','9454 Wilshire Blvd, Suite M-12, Beverly Hills, CA 90212','310-278-1022','https://visit.rodeo/businesses'],
-['90210 Watches','Luxury watches','369 N Camden Drive, Beverly Hills, CA 90210','424-276-1457','https://visit.rodeo/businesses'],
-['Abel Richard','Handbags & fashion','236 N Rodeo Drive, Beverly Hills, CA 90210','424-519-2235','https://abelrichard.com/'],
-['A.L.C.','Women’s fashion boutique','352 N Beverly Drive, Beverly Hills, CA 90210','','https://alcltd.com/'],
-['Alice + Olivia','Fashion boutique','410 N Beverly Drive, Beverly Hills, CA 90210','310-341-2870','https://www.aliceandolivia.com/'],
-['AllSaints','Fashion boutique','422 N Beverly Drive, Beverly Hills, CA 90210','310-499-0970','https://www.allsaints.com/'],
-['Alfred Coffee Canon Drive','Coffee shop','319 N Canon Drive, Beverly Hills, CA 90212','424-544-5100','https://alfred.la/'],
-['andSons Chocolatiers','Chocolatier','9548 Brighton Way, Beverly Hills, CA 90210','310-276-2776','https://and-sons.com/'],
-['Beverly Cañon Gardens','Public garden & event venue','241 N Canon Drive, Beverly Hills, CA 90210','310-285-6830','https://www.beverlyhills.org/']
-],
-dining:[
-['The Grill on the Alley','American steakhouse','9560 Dayton Way, Beverly Hills, CA 90210','','https://www.thegrill.com/'],
-['Mr Chow','Chinese fine dining','344 N Camden Drive, Beverly Hills, CA 90210','310-278-9911','https://www.mrchow.com/'],
-['Spago Beverly Hills','California fine dining','176 N Canon Drive, Beverly Hills, CA 90210','310-385-0880','https://wolfgangpuck.com/'],
-['CUT by Wolfgang Puck','Steakhouse','Beverly Wilshire, 9500 Wilshire Blvd, Beverly Hills, CA 90212','310-276-8500','https://www.wolfgangpuck.com/'],
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My90210.com — Everything Beverly Hills</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            200: '#f3e5ab',
+                            300: '#e6c875',
+                            400: '#d4af37',
+                            500: '#b89225',
+                            600: '#997518',
+                        },
+                        obsidian: {
+                            800: '#161922',
+                            900: '#0d0f14',
+                            950: '#07080b',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gold-text {
+            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-card {
+            background: rgba(15, 18, 25, 0.72);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.22);
+        }
+        .glass-nav {
+            background: rgba(7, 8, 11, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+    </style>
+</head>
+<body class="bg-obsidian-950 text-neutral-100 font-sans antialiased selection:bg-gold-400 selection:text-obsidian-950 overflow-x-hidden">
+
+    <!-- Sticky Luxury Top Navigation -->
+    <header class="sticky top-0 z-50 glass-nav border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Mark -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-full border border-gold-400/60 flex items-center justify-center bg-obsidian-900 shadow-lg group-hover:border-gold-300 transition">
+                    <span class="font-serif text-gold-300 font-bold text-lg tracking-tight">90210</span>
+                </div>
+                <div>
+                    <span class="font-serif text-2xl font-bold tracking-tight text-white">My<span class="gold-text">90210</span>.com</span>
+                    <span class="block text-[9px] uppercase tracking-[0.28em] text-gold-300/80 font-semibold">Everything Beverly Hills</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center gap-7 text-xs uppercase tracking-[0.18em] text-neutral-300 font-medium">
+                <a href="#directory" onclick="filterDirectory('all')" class="hover:text-gold-300 transition">All Directory</a>
+                <a href="#directory" onclick="filterDirectory('surgery')" class="hover:text-gold-300 transition">Cosmetic Surgery</a>
+                <a href="#directory" onclick="filterDirectory('dining')" class="hover:text-gold-300 transition">Fine Dining</a>
+                <a href="#directory" onclick="filterDirectory('realestate')" class="hover:text-gold-300 transition">Real Estate</a>
+                <a href="#directory" onclick="filterDirectory('shopping')" class="hover:text-gold-300 transition">Rodeo Boutiques</a>
+                <a href="#news" class="hover:text-gold-300 transition">90210 News</a>
+            </nav>
+
+            <!-- Action Badge -->
+            <div class="flex items-center gap-3">
+                <a href="#directory" class="text-[11px] uppercase tracking-[0.2em] font-semibold text-obsidian-950 bg-gradient-to-r from-gold-200 via-gold-400 to-gold-500 px-4 py-2.5 rounded-full shadow-lg hover:brightness-110 transition">
+                    Explore 90210
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Full-Bleed Ultra-HD Hero Banner -->
+    <section class="relative w-full min-h-[88vh] flex flex-col justify-between overflow-hidden border-b border-gold-400/20">
+        <!-- High-Definition Beverly Hills Rodeo Drive Background -->
+        <img 
+            src="https://images.unsplash.com/photo-1580655653885-65763b2597d0?auto=format&fit=crop&w=2560&q=95" 
+            onerror="this.src='https://placehold.co/1920x1080/0d0f14/d4af37?text=My90210.com+Beverly+Hills'"
+            alt="Rodeo Drive Beverly Hills Palm Trees at Sunset" 
+            class="absolute inset-0 w-full h-full object-cover object-center"
+        />
+
+        <!-- Cinematic Dark & Gold Vignette Overlays -->
+        <div class="absolute inset-0 bg-gradient-to-b from-obsidian-950/75 via-obsidian-950/45 to-obsidian-950"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-obsidian-950/80 via-transparent to-obsidian-950/80"></div>
+
+        <!-- Main Hero Typography -->
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 my-auto text-center py-16">
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-card text-gold-200 text-[11px] uppercase tracking-[0.25em] font-medium mb-6 shadow-2xl">
+                <i class="fa-solid fa-crown text-gold-400 text-[10px]"></i>
+                <span>Rodeo Drive • The Golden Triangle • Trousdale Estates</span>
+            </div>
+
+            <h1 class="font-serif text-6xl sm:text-8xl lg:text-9xl font-bold tracking-tight leading-none mb-4 drop-shadow-2xl">
+                <span class="text-white">My</span><span class="gold-text">90210</span><span class="text-white">.com</span>
+            </h1>
+
+            <p class="text-lg sm:text-3xl font-light tracking-[0.35em] uppercase text-gold-200 mb-6 drop-shadow-lg">
+                Everything Beverly Hills
+            </p>
+
+            <p class="max-w-2xl mx-auto text-sm sm:text-base text-neutral-300 font-light leading-relaxed mb-10">
+                Your direct insider portal to Beverly Hills' premier board-certified cosmetic surgeons, iconic fine dining establishments, trophy luxury real estate brokerages, Rodeo Drive fashion houses, and local 90210 dispatches.
+            </p>
+
+            <!-- 4 Core Pillar Cards -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto text-left">
+                <a href="#directory" onclick="filterDirectory('surgery')" class="glass-card rounded-2xl p-5 hover:border-gold-400/80 transition duration-300 group">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fa-solid fa-sparkles text-gold-400 text-lg"></i>
+                        <span class="text-[10px] uppercase tracking-widest text-neutral-400 group-hover:text-gold-300">01</span>
+                    </div>
+                    <h2 class="font-serif text-xl font-bold text-white group-hover:text-gold-200 transition">Cosmetic Surgery</h2>
+                    <p class="text-xs text-neutral-400 mt-1">Rodeo Drive & Roxbury aesthetic specialists.</p>
+                </a>
+
+                <a href="#directory" onclick="filterDirectory('dining')" class="glass-card rounded-2xl p-5 hover:border-gold-400/80 transition duration-300 group">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fa-solid fa-champagne-glasses text-gold-400 text-lg"></i>
+                        <span class="text-[10px] uppercase tracking-widest text-neutral-400 group-hover:text-gold-300">02</span>
+                    </div>
+                    <h2 class="font-serif text-xl font-bold text-white group-hover:text-gold-200 transition">Fine Dining</h2>
+                    <p class="text-xs text-neutral-400 mt-1">Michelin-starred restaurants & iconic lounges.</p>
+                </a>
+
+                <a href="#directory" onclick="filterDirectory('realestate')" class="glass-card rounded-2xl p-5 hover:border-gold-400/80 transition duration-300 group">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fa-solid fa-building-columns text-gold-400 text-lg"></i>
+                        <span class="text-[10px] uppercase tracking-widest text-neutral-400 group-hover:text-gold-300">03</span>
+                    </div>
+                    <h2 class="font-serif text-xl font-bold text-white group-hover:text-gold-200 transition">Luxury Real Estate</h2>
+                    <p class="text-xs text-neutral-400 mt-1">Trousdale, The Flats & Beverly Park estates.</p>
+                </a>
+
+                <a href="#news" class="glass-card rounded-2xl p-5 hover:border-gold-400/80 transition duration-300 group">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fa-regular fa-newspaper text-gold-400 text-lg"></i>
+                        <span class="text-[10px] uppercase tracking-widest text-neutral-400 group-hover:text-gold-300">04</span>
+                    </div>
+                    <h2 class="font-serif text-xl font-bold text-white group-hover:text-gold-200 transition">90210 News & Media</h2>
+                    <p class="text-xs text-neutral-400 mt-1">City dispatches, galas & local publications.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Coordinate Strip -->
+        <div class="relative z-10 max-w-7xl w-full mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between text-[11px] uppercase tracking-[0.25em] text-neutral-400">
+            <span>34.0736° N, 118.4004° W • Beverly Hills, CA 90210</span>
+            <span class="text-gold-300/90 mt-1 sm:mt-0">Direct Luxury Portal • Zero Lead Forms</span>
+        </div>
+    </section>
+
+    <!-- Main Interactive Beverly Hills Directory -->
+    <main id="directory" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-16">
+        
+        <!-- Directory Header & Category Switcher -->
+        <div class="text-center max-w-3xl mx-auto space-y-4">
+            <span class="text-xs uppercase tracking-[0.28em] text-gold-400 font-semibold">Curated 90210 Directory</span>
+            <h2 class="font-serif text-4xl sm:text-5xl font-bold text-white">Direct Connections to Beverly Hills</h2>
+            <p class="text-sm text-neutral-400">
+                Select a category below to explore premier institutions, clinics, restaurants, and brokerages in 90210 with direct links and phone numbers.
+            </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div id="filter-bar" class="flex flex-wrap items-center justify-center gap-3">
+            <button onclick="filterDirectory('all')" data-cat="all" class="filter-btn active px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition border border-gold-400 bg-gold-400 text-obsidian-950">
+                All 90210 Listings
+            </button>
+            <button onclick="filterDirectory('surgery')" data-cat="surgery" class="filter-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition border border-white/15 bg-obsidian-900 text-neutral-300 hover:border-gold-400/60">
+                Cosmetic Surgery & MedSpas
+            </button>
+            <button onclick="filterDirectory('dining')" data-cat="dining" class="filter-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition border border-white/15 bg-obsidian-900 text-neutral-300 hover:border-gold-400/60">
+                Fine Dining & Hotels
+            </button>
+            <button onclick="filterDirectory('realestate')" data-cat="realestate" class="filter-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition border border-white/15 bg-obsidian-900 text-neutral-300 hover:border-gold-400/60">
+                Luxury Real Estate
+            </button>
+            <button onclick="filterDirectory('shopping')" data-cat="shopping" class="filter-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition border border-white/15 bg-obsidian-900 text-neutral-300 hover:border-gold-400/60">
+                Rodeo Drive & Concierge
+            </button>
+        </div>
+
+        <!-- Directory Cards Grid -->
+        <div id="listings-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Populated dynamically via clean inline JS -->
+        </div>
+
+        <!-- 90210 News & Local Publications Section -->
+        <section id="news" class="pt-12 border-t border-white/10 space-y-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <span class="text-xs uppercase tracking-[0.28em] text-gold-400 font-semibold">Press & Local Dispatches</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mt-1">Beverly Hills News & City Guides</h2>
+                </div>
+                <span class="text-xs text-neutral-400 uppercase tracking-widest">Updated 90210 Coverage</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="https://beverlyhills.org" target="_blank" rel="noopener noreferrer" class="bg-obsidian-900 border border-white/10 hover:border-gold-400/50 rounded-2xl p-6 transition group flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Official Civic Portal</span>
+                        <h3 class="font-serif text-2xl font-bold text-white mt-2 group-hover:text-gold-200 transition">City of Beverly Hills Official</h3>
+                        <p class="text-xs text-neutral-400 mt-2 leading-relaxed">
+                            Municipal announcements, Golden Triangle cultural events, city council schedules, and Rodeo Drive permits.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-gold-300 font-semibold">
+                        <span>Visit beverlyhills.org</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </div>
+                </a>
+
+                <a href="https://bhcourier.com" target="_blank" rel="noopener noreferrer" class="bg-obsidian-900 border border-white/10 hover:border-gold-400/50 rounded-2xl p-6 transition group flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Local Newspaper</span>
+                        <h3 class="font-serif text-2xl font-bold text-white mt-2 group-hover:text-gold-200 transition">The Beverly Hills Courier</h3>
+                        <p class="text-xs text-neutral-400 mt-2 leading-relaxed">
+                            Since 1965, covering 90210 society galas, real estate transactions, local business openings, and community news.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-gold-300 font-semibold">
+                        <span>Read bhcourier.com</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </div>
+                </a>
+
+                <a href="https://lovebeverlyhills.com" target="_blank" rel="noopener noreferrer" class="bg-obsidian-900 border border-white/10 hover:border-gold-400/50 rounded-2xl p-6 transition group flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] uppercase tracking-widest text-gold-400 font-bold">Events & Hospitality</span>
+                        <h3 class="font-serif text-2xl font-bold text-white mt-2 group-hover:text-gold-200 transition">Love Beverly Hills Calendar</h3>
+                        <p class="text-xs text-neutral-400 mt-2 leading-relaxed">
+                            Seasonal concierge guide to Concours d'Elegance on Rodeo Drive, art walks, and hotel dining experiences.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-gold-300 font-semibold">
+                        <span>Explore lovebeverlyhills.com</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Luxury Footer -->
+    <footer class="bg-obsidian-900 border-t border-white/10 py-12 px-4 sm:px-6 lg:px-8 text-xs text-neutral-400">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full border border-gold-400/50 flex items-center justify-center text-gold-300 font-serif font-bold">
+                    90210
+                </div>
+                <div>
+                    <span class="font-serif text-lg font-bold text-white">My<span class="text-gold-400">90210</span>.com</span>
+                    <span class="block text-[10px] uppercase tracking-widest text-neutral-500">Everything Beverly Hills</span>
+                </div>
+            </div>
+            <p class="text-center md:text-right text-[11px] text-neutral-500 max-w-md">
+                &copy; 2026 My90210.com. Direct informational directory for Beverly Hills, CA 90210. All trademarks belong to their respective owners.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive Directory Script -->
+    <script>
+        const listings = [
+            // Cosmetic Surgery & MedSpas
+            {
+                category: 'surgery',
+                badge: 'Cosmetic Surgery',
+                name: 'Lasky Clinic Beverly Hills',
+                address: '201 S Lasky Dr, Beverly Hills, CA 90212',
+                desc: 'Renowned plastic and reconstructive surgery center specializing in facial rejuvenation and bespoke aesthetic procedures.',
+                phone: '(310) 552-2173',
+                tel: '+13105522173',
+                url: 'https://www.laskyclinic.com'
+            },
+            {
+                category: 'surgery',
+                badge: 'Plastic Surgery',
+                name: 'Beverly Hills Plastic Surgery Group',
+                address: '436 N Bedford Dr, Suite 306, Beverly Hills, CA 90210',
+                desc: 'Board-certified aesthetic surgeons offering rhinoplasty, body contouring, and minimally invasive treatments.',
+                phone: '(310) 275-6600',
+                tel: '+13102756600',
+                url: 'https://www.bhpsg.com'
+            },
+            {
+                category: 'surgery',
+                badge: 'Dermatology & Laser',
+                name: 'Koppelman Aesthetic Surgery & Hair',
+                address: '9675 Brighton Way, Beverly Hills, CA 90210',
+                desc: 'Boutique facial plastic surgery, oculoplastic specialists, and advanced follicular restoration in the Golden Triangle.',
+                phone: '(310) 276-1881',
+                tel: '+13102761881',
+                url: 'https://www.kopelmanhair.com'
+            },
+            {
+                category: 'surgery',
+                badge: 'Luxury MedSpa',
+                name: 'The Spa at The Beverly Hills Hotel',
+                address: '9641 Sunset Blvd, Beverly Hills, CA 90210',
+                desc: 'Signature cellular facials, red-carpet sculpting treatments, and tranquil private wellness suites.',
+                phone: '(310) 887-2006',
+                tel: '+13108872006',
+                url: 'https://www.dorchestercollection.com/los-angeles/the-beverly-hills-hotel/spa'
+            },
+
+            // Fine Dining & Iconic Hotels
+            {
+                category: 'dining',
+                badge: 'Iconic Dining',
+                name: 'The Polo Lounge',
+                address: '9641 Sunset Blvd, Beverly Hills, CA 90210',
+                desc: 'Legendary Hollywood power-lunch destination featuring garden patio dining, live jazz, and classic California cuisine.',
+                phone: '(310) 887-2777',
+                tel: '+13108872777',
+                url: 'https://www.dorchestercollection.com/los-angeles/the-beverly-hills-hotel/dining/the-polo-lounge'
+            },
+            {
+                category: 'dining',
+                badge: 'Steakhouse & Lounge',
+                name: 'CUT by Wolfgang Puck',
+                address: '9500 Wilshire Blvd, Beverly Hills, CA 90212',
+                desc: 'Michelin-starred contemporary steakhouse inside the Beverly Wilshire offering Japanese Wagyu and an extensive cellar.',
+                phone: '(310) 276-8500',
+                tel: '+13102768500',
+                url: 'https://wolfgangpuck.com/restaurants/cut-beverly-hills/'
+            },
+            {
+                category: 'dining',
+                badge: 'Classic Bistro',
+                name: 'The Grill on the Alley',
+                address: '9560 Dayton Way, Beverly Hills, CA 90210',
+                desc: 'Beloved Golden Triangle institution serving prime steaks, fresh seafood, and classic martinis since 1984.',
+                phone: '(310) 276-0615',
+                tel: '+13102760615',
+                url: 'https://www.thegrill.com'
+            },
+            {
+                category: 'dining',
+                badge: 'Italian Fine Dining',
+                name: 'Il Pastaio Beverly Hills',
+                address: '400 N Canon Dr, Beverly Hills, CA 90210',
+                desc: 'Giacomino Drago’s iconic Canon Drive trattoria known for handmade pastas, white truffles, and patio people-watching.',
+                phone: '(310) 205-5444',
+                tel: '+13102055444',
+                url: 'https://www.giacominodrago.com/il-pastaio'
+            },
+
+            // Luxury Real Estate
+            {
+                category: 'realestate',
+                badge: 'Luxury Brokerage',
+                name: 'The Agency Beverly Hills',
+                address: '331 Foothill Rd, Suite 100, Beverly Hills, CA 90210',
+                desc: 'Global luxury real estate brokerage representing architectural estates in Trousdale, Beverly Park, and The Flats.',
+                phone: '(424) 230-3700',
+                tel: '+14242303700',
+                url: 'https://www.theagencyre.com'
+            },
+            {
+                category: 'realestate',
+                badge: 'Trophy Estates',
+                name: 'Hilton & Hyland',
+                address: '257 N Canon Dr, Beverly Hills, CA 90210',
+                desc: 'Founding Christie’s International Real Estate affiliate specializing in ultra-high-net-worth 90210 residential properties.',
+                phone: '(310) 278-3311',
+                tel: '+13102783311',
+                url: 'https://www.hiltonhyland.com'
+            },
+            {
+                category: 'realestate',
+                badge: 'Architectural Homes',
+                name: 'Westside Estate Agency',
+                address: '210 N Canon Dr, Beverly Hills, CA 90210',
+                desc: 'Premier representation for historic estates, gated compounds, and custom modern residences across Beverly Hills.',
+                phone: '(310) 247-7770',
+                tel: '+13102477770',
+                url: 'https://www.weahomes.com'
+            },
+
+            // Rodeo Drive Boutiques & Concierge
+            {
+                category: 'shopping',
+                badge: 'Rodeo Drive Landmark',
+                name: 'Two Rodeo Drive',
+                address: '9480 Dayton Way, Beverly Hills, CA 90210',
+                desc: 'Cobblestone European-style luxury promenade housing haute couture houses, high jewelry, and private salons.',
+                phone: '(310) 247-7040',
+                tel: '+13102477040',
+                url: 'https://rodeodrive-bh.com'
+            },
+            {
+                category: 'shopping',
+                badge: 'Five-Star Hospitality',
+                name: 'Beverly Wilshire, A Four Seasons Hotel',
+                address: '9500 Wilshire Blvd, Beverly Hills, CA 90212',
+                desc: 'Historic landmark hotel at the foot of Rodeo Drive offering luxury suites, Forbes Five-Star spa, and concierge services.',
+                phone: '(310) 275-5200',
+                tel: '+13102755200',
+                url: 'https://www.fourseasons.com/beverlywilshire/'
+            }
+        ];
+
+        function renderListings(filter = 'all') {
+            const grid = document.getElementById('listings-grid');
+            if (!grid) return;
+
+            const filtered = filter === 'all' 
+                ? listings 
+                : listings.filter(item => item.category === filter);
+
+            grid.innerHTML = filtered.map(item => `
+                <div class="bg-obsidian-900 border border-white/10 hover:border-gold-400/60 rounded-2xl p-6 flex flex-col justify-between transition duration-300 shadow-xl group">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="text-[10px] uppercase tracking-[0.2em] font-bold text-gold-300 bg-gold-400/10 border border-gold-400/25 px-3 py-1 rounded-full">
+                                ${item.badge}
+                            </span>
+                            <span class="text-[11px] text-neutral-500 font-medium">90210</span>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-white group-hover:text-gold-200 transition mb-1.5">
+                            ${item.name}
+                        </h3>
+                        <p class="text-xs text-gold-300/80 mb-3 flex items-center gap-1.5">
+                            <i class="fa-solid fa-location-dot text-[10px]"></i>
+                            <span>${item.address}</span>
+                        </p>
+                        <p class="text-xs text-neutral-400 leading-relaxed mb-6">
+                            ${item.desc}
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-white/10 grid grid-cols-2 gap-3">
+                        <a href="tel:${item.tel}" class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 text-neutral-200 text-xs font-semibold transition border border-white/10">
+                            <i class="fa-solid fa-phone text-gold-400 text-[11px]"></i>
+                            <span>${item.phone}</span>
+                        </a>
+                        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-gold-400/15 hover:bg-gold-400 text-gold-200 hover:text-obsidian-950 text-xs font-semibold transition border border-gold-400/30">
+                            <span>Website</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterDirectory(category) {
+            // Update active button state
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.cat === category) {
+                    btn.classList.add('bg-gold-400', 'text-obsidian-950', 'border-gold-400');
+                    btn.classList.remove('bg-obsidian-900', 'text-neutral-300', 'border-white/15');
+                } else {
+                    btn.classList.remove('bg-gold-400', 'text-obsidian-950', 'border-gold-400');
+                    btn.classList.add('bg-obsidian-900', 'text-neutral-300', 'border-white/15');
+                }
+            });
+            renderListings(category);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderListings('all');
+        });
+    </script>
+</body>
+</html>
